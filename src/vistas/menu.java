@@ -468,7 +468,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
            modelo.setRowCount(0);
            cargarTabla();
         
-        
+        //salame
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
