@@ -6,7 +6,9 @@
 package vistas;
 
 import accesoADatos.ProductoData;
+import accesoADatos.ProveedorData;
 import entidades.Producto;
+import entidades.Proveedor;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -16,14 +18,53 @@ import javax.swing.table.DefaultTableModel;
  * @author pc
  */
 public class menu extends javax.swing.JFrame {
-private DefaultTableModel modelo = new DefaultTableModel();
+
+    //private DefaultTableModel modelo = new DefaultTableModel();
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int row, int column) {
+            if (column == 0) {
+                return false;
+            } else if (column == 1) {
+                return false;
+            } else if (column == 2) {
+                return false;
+            } else if (column == 3) {
+                return false;
+            } else if (column == 4) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    };
+
+    // private DefaultTableModel modelo1 = new DefaultTableModel();
+    private DefaultTableModel modelo1 = new DefaultTableModel() {
+        public boolean isCellEditable(int row, int column) {
+            if (column == 0) {
+                return false;
+            } else if (column == 1) {
+                return false;
+            } else if (column == 2) {
+                return false;
+            } else if (column == 3) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    };
+
     /**
      * Creates new form menu
      */
     public menu() {
         initComponents();
+        
         cargarCabezera();
         cargarTabla();
+        cargarCabezeraProve();
+        cargarTablaProve();
     }
 
     /**
@@ -51,11 +92,6 @@ private DefaultTableModel modelo = new DefaultTableModel();
         jpBotonCompra = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        PanelProveedores = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        PanelCompra = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        PanelConsultas = new javax.swing.JPanel();
         PanelProducto = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -63,7 +99,6 @@ private DefaultTableModel modelo = new DefaultTableModel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jtidProducto = new javax.swing.JTextField();
         jtDescripcion = new javax.swing.JTextField();
         jtNombreProducto = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
@@ -72,8 +107,31 @@ private DefaultTableModel modelo = new DefaultTableModel();
         jtStock = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtablaProducto = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jBGuardarProducto = new javax.swing.JButton();
         jCEstado = new javax.swing.JCheckBox();
+        jBEliminar = new javax.swing.JButton();
+        jBModificar = new javax.swing.JButton();
+        PanelProveedores = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jtRazonSocial = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jtDomicilioProveedor = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jtTelefonoProveedor = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        jBGuardarProveedor = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtablaProveedor = new javax.swing.JTable();
+        jBEliminarprove = new javax.swing.JButton();
+        jBModificarProve = new javax.swing.JButton();
+        PanelCompra = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        PanelConsultas = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,14 +141,14 @@ private DefaultTableModel modelo = new DefaultTableModel();
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 0, 204));
+        jLabel3.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("ELECTRONICS");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 320, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/m_provemaxlogo150.jpg"))); // NOI18N
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 190, 120));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/m_pvmlogonew.jpg"))); // NOI18N
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 130));
 
         menuPrincipal.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 130));
 
@@ -204,28 +262,6 @@ private DefaultTableModel modelo = new DefaultTableModel();
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        PanelProveedores.setBackground(new java.awt.Color(255, 255, 255));
-        PanelProveedores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel10.setText("PROVEEDORES");
-        PanelProveedores.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 291, -1));
-
-        jTabbedPane1.addTab("Proveedores", PanelProveedores);
-
-        PanelCompra.setBackground(new java.awt.Color(255, 255, 255));
-        PanelCompra.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel11.setText("Compra");
-        PanelCompra.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 291, -1));
-
-        jTabbedPane1.addTab("Compra de Productos", PanelCompra);
-
-        PanelConsultas.setBackground(new java.awt.Color(255, 255, 255));
-        PanelConsultas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jTabbedPane1.addTab("Consultas", PanelConsultas);
-
         PanelProducto.setBackground(new java.awt.Color(255, 255, 255));
         PanelProducto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -237,7 +273,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("_________________________________");
         jLabel9.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        PanelProducto.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 240, 30));
+        PanelProducto.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 250, 30));
 
         jLabel14.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(51, 51, 51));
@@ -258,16 +294,6 @@ private DefaultTableModel modelo = new DefaultTableModel();
         jLabel12.setForeground(new java.awt.Color(51, 51, 51));
         jLabel12.setText("STOCK:");
         PanelProducto.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, 50, -1));
-
-        jtidProducto.setBackground(new java.awt.Color(255, 255, 255));
-        jtidProducto.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jtidProducto.setBorder(null);
-        jtidProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtidProductoActionPerformed(evt);
-            }
-        });
-        PanelProducto.add(jtidProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 70, -1));
 
         jtDescripcion.setBackground(new java.awt.Color(255, 255, 255));
         jtDescripcion.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
@@ -320,7 +346,213 @@ private DefaultTableModel modelo = new DefaultTableModel();
         PanelProducto.add(jtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, 70, -1));
 
         jtablaProducto.setBackground(new java.awt.Color(255, 255, 255));
+        jtablaProducto.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jtablaProducto.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jtablaProducto.setGridColor(new java.awt.Color(204, 204, 204));
+        jtablaProducto.setRowHeight(30);
+        jtablaProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtablaProductoMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jtablaProducto);
+
+        PanelProducto.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 830, 200));
+
+        jBGuardarProducto.setBackground(new java.awt.Color(204, 204, 204));
+        jBGuardarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono32.png"))); // NOI18N
+        jBGuardarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBGuardarProductoMouseEntered(evt);
+            }
+        });
+        jBGuardarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarProductoActionPerformed(evt);
+            }
+        });
+        PanelProducto.add(jBGuardarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, 80, 60));
+
+        jCEstado.setBackground(new java.awt.Color(255, 255, 255));
+        jCEstado.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jCEstado.setForeground(new java.awt.Color(0, 0, 0));
+        jCEstado.setText("ESTADO");
+        PanelProducto.add(jCEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, -1, -1));
+
+        jBEliminar.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jBEliminar.setText("ELIMINAR");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
+        PanelProducto.add(jBEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 140, -1));
+
+        jBModificar.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jBModificar.setText("MODIFICAR");
+        jBModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModificarActionPerformed(evt);
+            }
+        });
+        PanelProducto.add(jBModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 390, 140, -1));
+
+        jTabbedPane1.addTab("Producto", PanelProducto);
+
+        PanelProveedores.setBackground(new java.awt.Color(255, 255, 255));
+        PanelProveedores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setText("___________________________________________");
+        jLabel13.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        PanelProveedores.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 310, 40));
+
+        jtRazonSocial.setBackground(new java.awt.Color(255, 255, 255));
+        jtRazonSocial.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jtRazonSocial.setBorder(null);
+        jtRazonSocial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtRazonSocialActionPerformed(evt);
+            }
+        });
+        PanelProveedores.add(jtRazonSocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 300, -1));
+
+        jLabel17.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel17.setText("RAZON SOCIAL:");
+        PanelProveedores.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 110, -1));
+
+        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel21.setText("_______________________________________________");
+        jLabel21.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        PanelProveedores.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 340, 40));
+
+        jtDomicilioProveedor.setBackground(new java.awt.Color(255, 255, 255));
+        jtDomicilioProveedor.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jtDomicilioProveedor.setBorder(null);
+        jtDomicilioProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtDomicilioProveedorActionPerformed(evt);
+            }
+        });
+        PanelProveedores.add(jtDomicilioProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 330, -1));
+
+        jLabel22.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel22.setText("DOMICILIO:");
+        PanelProveedores.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 80, -1));
+
+        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel23.setText("___________________");
+        jLabel23.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        PanelProveedores.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 140, 40));
+
+        jtTelefonoProveedor.setBackground(new java.awt.Color(255, 255, 255));
+        jtTelefonoProveedor.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jtTelefonoProveedor.setBorder(null);
+        jtTelefonoProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtTelefonoProveedorActionPerformed(evt);
+            }
+        });
+        PanelProveedores.add(jtTelefonoProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 140, -1));
+
+        jLabel24.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel24.setText("TELEFONO:");
+        PanelProveedores.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 80, -1));
+
+        jBGuardarProveedor.setBackground(new java.awt.Color(204, 204, 204));
+        jBGuardarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono32.png"))); // NOI18N
+        jBGuardarProveedor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBGuardarProveedorMouseEntered(evt);
+            }
+        });
+        jBGuardarProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarProveedorActionPerformed(evt);
+            }
+        });
+        PanelProveedores.add(jBGuardarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 80, 60));
+
+        jtablaProveedor.setBackground(new java.awt.Color(255, 255, 255));
+        jtablaProveedor.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jtablaProveedor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jtablaProveedor.setGridColor(new java.awt.Color(204, 204, 204));
+        jtablaProveedor.setRowHeight(30);
+        jtablaProveedor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtablaProveedorMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jtablaProveedor);
+
+        PanelProveedores.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 830, 230));
+
+        jBEliminarprove.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jBEliminarprove.setText("ELIMINAR");
+        jBEliminarprove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarproveActionPerformed(evt);
+            }
+        });
+        PanelProveedores.add(jBEliminarprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 140, -1));
+
+        jBModificarProve.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jBModificarProve.setText("MODIFICAR");
+        jBModificarProve.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModificarProveActionPerformed(evt);
+            }
+        });
+        PanelProveedores.add(jBModificarProve, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, 140, -1));
+
+        jTabbedPane1.addTab("Proveedores", PanelProveedores);
+
+        PanelCompra.setBackground(new java.awt.Color(255, 255, 255));
+        PanelCompra.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -331,31 +563,31 @@ private DefaultTableModel modelo = new DefaultTableModel();
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jtablaProducto);
+        jScrollPane3.setViewportView(jTable1);
 
-        PanelProducto.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 830, 110));
+        PanelCompra.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 231, 830, 210));
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono32.png"))); // NOI18N
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton1MouseEntered(evt);
+        jTabbedPane1.addTab("Compra de Productos", PanelCompra);
+
+        PanelConsultas.setBackground(new java.awt.Color(255, 255, 255));
+        PanelConsultas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        PanelProducto.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, 80, 60));
+        ));
+        jScrollPane4.setViewportView(jTable2);
 
-        jCEstado.setBackground(new java.awt.Color(255, 255, 255));
-        jCEstado.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jCEstado.setForeground(new java.awt.Color(0, 0, 0));
-        jCEstado.setText("ESTADO");
-        PanelProducto.add(jCEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, -1, -1));
+        PanelConsultas.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 181, 830, 270));
 
-        jTabbedPane1.addTab("Producto", PanelProducto);
+        jTabbedPane1.addTab("Consultas", PanelConsultas);
 
         menuPrincipal.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 830, 510));
 
@@ -369,36 +601,34 @@ private DefaultTableModel modelo = new DefaultTableModel();
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(menuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(menuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jpBotonProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBotonProductosMouseClicked
-        jTabbedPane1.setSelectedIndex(3);
+        jTabbedPane1.setSelectedIndex(0);
     }//GEN-LAST:event_jpBotonProductosMouseClicked
 
     private void jpBotonProductosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBotonProductosMouseEntered
-       jpBotonProductos.setBackground(new Color(6, 45, 115));
+        jpBotonProductos.setBackground(new Color(6, 45, 115));
     }//GEN-LAST:event_jpBotonProductosMouseEntered
 
     private void jpBotonProductosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBotonProductosMouseExited
-       jpBotonProductos.setBackground(new Color(6, 60, 130));
+        jpBotonProductos.setBackground(new Color(6, 60, 130));
     }//GEN-LAST:event_jpBotonProductosMouseExited
 
     private void jpBotonProveedoresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBotonProveedoresMouseEntered
-       jpBotonProveedores.setBackground(new Color(6, 45, 115));
+        jpBotonProveedores.setBackground(new Color(6, 45, 115));
     }//GEN-LAST:event_jpBotonProveedoresMouseEntered
 
     private void jpBotonProveedoresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBotonProveedoresMouseExited
-       jpBotonProveedores.setBackground(new Color(6, 60, 130));
+        jpBotonProveedores.setBackground(new Color(6, 60, 130));
     }//GEN-LAST:event_jpBotonProveedoresMouseExited
 
     private void jpBotonCompraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBotonCompraMouseEntered
-         jpBotonCompra.setBackground(new Color(6, 45, 115));
+        jpBotonCompra.setBackground(new Color(6, 45, 115));
     }//GEN-LAST:event_jpBotonCompraMouseEntered
 
     private void jpBotonCompraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBotonCompraMouseExited
@@ -414,20 +644,16 @@ private DefaultTableModel modelo = new DefaultTableModel();
     }//GEN-LAST:event_jpBotonConsultasMouseExited
 
     private void jpBotonProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBotonProveedoresMouseClicked
-         jTabbedPane1.setSelectedIndex(0);
+        jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_jpBotonProveedoresMouseClicked
 
     private void jpBotonCompraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBotonCompraMouseClicked
-       jTabbedPane1.setSelectedIndex(1);
+        jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_jpBotonCompraMouseClicked
 
     private void jpBotonConsultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBotonConsultasMouseClicked
-         jTabbedPane1.setSelectedIndex(2);
+        jTabbedPane1.setSelectedIndex(3);
     }//GEN-LAST:event_jpBotonConsultasMouseClicked
-
-    private void jtidProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtidProductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtidProductoActionPerformed
 
     private void jtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDescripcionActionPerformed
         // TODO add your handling code here:
@@ -445,31 +671,218 @@ private DefaultTableModel modelo = new DefaultTableModel();
         // TODO add your handling code here:
     }//GEN-LAST:event_jtStockActionPerformed
 
-    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+    private void jBGuardarProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBGuardarProductoMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1MouseEntered
+    }//GEN-LAST:event_jBGuardarProductoMouseEntered
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-           String nombreProducto = jtNombreProducto.getText();
-           String descripcion = jtDescripcion.getText();
-           int stock = Integer.parseInt(jtStock.getText());
-           double precio=Double.parseDouble(jtPrecio.getText());
-           boolean activo=jCEstado.isSelected();
-           
-           Producto producto = new Producto(nombreProducto,descripcion,precio,stock,activo);
-           ProductoData pro = new ProductoData();
-           pro.guardarProducto(producto);
-           
-           jtNombreProducto.setText("");
-           jtDescripcion.setText("");
-           jtStock.setText("");
-           jtPrecio.setText("");
-           jCEstado.setSelected(false);
-           modelo.setRowCount(0);
-           cargarTabla();
+    private void jBGuardarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarProductoActionPerformed
+
+        if (jtNombreProducto.getText().equals("") || !jtNombreProducto.getText().matches("[a-zA-Z]*")) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar el nombre correctamente");
+            jtNombreProducto.setText("");
+        } else {
+            if (jtDescripcion.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Error ingrese datos en Descripcion");
+                jtDescripcion.setText("");
+            } else {
+                if (jtStock.getText().equals("") || !jtStock.getText().matches("[0-9]*")) {
+                    JOptionPane.showMessageDialog(null, "Debe ingresar solo numeros");
+                    jtStock.setText("");
+                } else {
+                    if (jtPrecio.getText().equals("") || !jtPrecio.getText().matches("\\d+(\\.\\d+)?")) {
+                        JOptionPane.showMessageDialog(null, "Debe ingresar el precio correctamente");
+                        jtPrecio.setText("");
+                    } else {
+
+                        String nombreProducto = jtNombreProducto.getText();
+                        String descripcion = jtDescripcion.getText();
+                        int stock = Integer.parseInt(jtStock.getText());
+                        double precio = Double.parseDouble(jtPrecio.getText());
+                        boolean activo = jCEstado.isSelected();
+
+                        Producto producto = new Producto(nombreProducto, descripcion, precio, stock, activo);
+                        ProductoData pro = new ProductoData();
+                        pro.guardarProducto(producto);
+
+                        jtNombreProducto.setText("");
+                        jtDescripcion.setText("");
+                        jtStock.setText("");
+                        jtPrecio.setText("");
+                        jCEstado.setSelected(false);
+                        modelo.setRowCount(0);
+                        cargarTabla();
+                    }
+                }
+            }
+        }
+
+    }//GEN-LAST:event_jBGuardarProductoActionPerformed
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+        int fila = jtablaProducto.getSelectedRow();
+
+        int id = Integer.parseInt(this.jtablaProducto.getValueAt(fila, 0).toString());
+        modelo.removeRow(fila);
+        ProductoData pro = new ProductoData();
+        pro.eliminarProducto(id);
+        jtNombreProducto.setText("");
+        jtDescripcion.setText("");
+        jtStock.setText("");
+        jtPrecio.setText("");
+        jCEstado.setSelected(false);
+    }//GEN-LAST:event_jBEliminarActionPerformed
+
+
+    private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
+
+//        int idp = jtablaProducto.getSelectedRow();
+//        int id = Integer.parseInt(this.jtablaProducto.getValueAt(idp, 0).toString());
+//        
+//        int nomp = jtablaProducto.getSelectedRow();
+//        String nom = jtablaProducto.getValueAt(nomp, 1).toString();
+//        
+//        int desp = jtablaProducto.getSelectedRow();
+//        String des = jtablaProducto.getValueAt(desp, 2).toString();
+//        
+//        int pre = jtablaProducto.getSelectedRow();
+//        double precio = Double.parseDouble(this.jtablaProducto.getValueAt(pre, 3).toString());
+//        
+//        int sto = jtablaProducto.getSelectedRow();
+//        int stock = Integer.parseInt(this.jtablaProducto.getValueAt(sto, 4).toString());
+//        
+//        int es = jtablaProducto.getSelectedRow();
+//        boolean esta = Boolean.parseBoolean(this.jtablaProducto.getValueAt(es, 5).toString());
+        int idp = jtablaProducto.getSelectedRow();
+        int id = Integer.parseInt(this.jtablaProducto.getValueAt(idp, 0).toString());
+        String nom = jtNombreProducto.getText();
+        String des = jtDescripcion.getText();
+        double precio = Double.parseDouble(jtPrecio.getText());
+        int stock = Integer.parseInt(jtStock.getText());
+        boolean esta = jCEstado.isSelected();
+
+        Producto prod = new Producto(id, nom, des, precio, stock, esta);
+
+        ProductoData proData = new ProductoData();
+
+        proData.actualizarProducto(prod);
+        modelo.setRowCount(0);
+        cargarTabla();
+        jtNombreProducto.setText("");
+        jtDescripcion.setText("");
+        jtPrecio.setText("");
+        jtStock.setText("");
+        jCEstado.setSelected(false);
+
+    }//GEN-LAST:event_jBModificarActionPerformed
+
+    private void jBGuardarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarProveedorActionPerformed
+
+        if (jtRazonSocial.getText().equals("") || !jtRazonSocial.getText().matches("[A-Za-z]*")) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar los datos correctamente");
+            jtRazonSocial.setText("");
+        } else {
+            if (jtDomicilioProveedor.getText().equals("") || jtDomicilioProveedor.getText().matches("[A-Za-z_0-9]*[0-9][A-Za-z_0-9]*")) {
+                JOptionPane.showMessageDialog(null, "Debe ingresar el domicilio correctamente");
+                jtDomicilioProveedor.setText("");
+            } else {
+                 if (jtTelefonoProveedor.getText().equals("") || !jtTelefonoProveedor.getText().matches("[0-9]*")) {
+                    JOptionPane.showMessageDialog(null, "Debe ingresar solo numeros");
+                    jtTelefonoProveedor.setText("");
+                } else {
+
+                String razon = jtRazonSocial.getText();
+                String domicilio = jtDomicilioProveedor.getText();
+                String telefono = jtTelefonoProveedor.getText();
+
+                Proveedor proveedor = new Proveedor(razon, domicilio, telefono);
+                ProveedorData prove = new ProveedorData();
+                prove.guardarProveedor(proveedor);
+                
+                jtRazonSocial.setText("");
+                jtDomicilioProveedor.setText("");
+                jtTelefonoProveedor.setText("");
+
+                modelo1.setRowCount(0);
+                cargarTablaProve();
+                 }
+            }
         
-        //salame
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
+        
+
+    }//GEN-LAST:event_jBGuardarProveedorActionPerformed
+
+    private void jBGuardarProveedorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBGuardarProveedorMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBGuardarProveedorMouseEntered
+
+    private void jtTelefonoProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtTelefonoProveedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtTelefonoProveedorActionPerformed
+
+    private void jtDomicilioProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDomicilioProveedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtDomicilioProveedorActionPerformed
+
+    private void jtRazonSocialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtRazonSocialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtRazonSocialActionPerformed
+
+    private void jBEliminarproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarproveActionPerformed
+
+        int fila = jtablaProveedor.getSelectedRow();
+        int id = Integer.parseInt(this.jtablaProveedor.getValueAt(fila, 0).toString());
+        modelo1.removeRow(fila);
+        ProveedorData prove = new ProveedorData();
+        prove.eliminarProveedor(id);
+        jtRazonSocial.setText("");
+        jtDomicilioProveedor.setText("");
+        jtTelefonoProveedor.setText("");
+        jCEstado.setSelected(false);
+    }//GEN-LAST:event_jBEliminarproveActionPerformed
+
+    private void jBModificarProveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarProveActionPerformed
+
+        int idp = jtablaProveedor.getSelectedRow();
+        int id = Integer.parseInt(this.jtablaProveedor.getValueAt(idp, 0).toString());
+
+        String razon = jtRazonSocial.getText();
+        String domi = jtDomicilioProveedor.getText();
+        String tele = jtTelefonoProveedor.getText();
+
+        Proveedor pro = new Proveedor(id, razon, domi, tele);
+
+        ProveedorData proda = new ProveedorData();
+
+        proda.actualizarProveedor(pro);
+        modelo1.setRowCount(0);
+        cargarTablaProve();
+        jtRazonSocial.setText("");
+        jtDomicilioProveedor.setText("");
+        jtTelefonoProveedor.setText("");
+
+    }//GEN-LAST:event_jBModificarProveActionPerformed
+
+    private void jtablaProveedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtablaProveedorMouseClicked
+        int fila = jtablaProveedor.rowAtPoint(evt.getPoint());
+
+        jtRazonSocial.setText(jtablaProveedor.getValueAt(fila, 1).toString());
+        jtDomicilioProveedor.setText(jtablaProveedor.getValueAt(fila, 2).toString());
+        jtTelefonoProveedor.setText(jtablaProveedor.getValueAt(fila, 3).toString());
+
+    }//GEN-LAST:event_jtablaProveedorMouseClicked
+
+    private void jtablaProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtablaProductoMouseClicked
+
+        int fila = jtablaProducto.rowAtPoint(evt.getPoint());
+        jtNombreProducto.setText(jtablaProducto.getValueAt(fila, 1).toString());
+        jtDescripcion.setText(jtablaProducto.getValueAt(fila, 2).toString());
+        jtPrecio.setText(jtablaProducto.getValueAt(fila, 3).toString());
+        jtStock.setText(jtablaProducto.getValueAt(fila, 4).toString());
+        jCEstado.setSelected(true);
+
+
+    }//GEN-LAST:event_jtablaProductoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -511,19 +924,28 @@ private DefaultTableModel modelo = new DefaultTableModel();
     private javax.swing.JPanel PanelConsultas;
     private javax.swing.JPanel PanelProducto;
     private javax.swing.JPanel PanelProveedores;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBEliminar;
+    private javax.swing.JButton jBEliminarprove;
+    private javax.swing.JButton jBGuardarProducto;
+    private javax.swing.JButton jBGuardarProveedor;
+    private javax.swing.JButton jBModificar;
+    private javax.swing.JButton jBModificarProve;
     private javax.swing.JCheckBox jCEstado;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -534,40 +956,73 @@ private DefaultTableModel modelo = new DefaultTableModel();
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JPanel jpBotonCompra;
     private javax.swing.JPanel jpBotonConsultas;
     private javax.swing.JPanel jpBotonProductos;
     private javax.swing.JPanel jpBotonProveedores;
     private javax.swing.JTextField jtDescripcion;
+    private javax.swing.JTextField jtDomicilioProveedor;
     private javax.swing.JTextField jtNombreProducto;
     private javax.swing.JTextField jtPrecio;
+    private javax.swing.JTextField jtRazonSocial;
     private javax.swing.JTextField jtStock;
+    private javax.swing.JTextField jtTelefonoProveedor;
     private javax.swing.JTable jtablaProducto;
-    private javax.swing.JTextField jtidProducto;
+    private javax.swing.JTable jtablaProveedor;
     private javax.swing.JPanel menuPrincipal;
     // End of variables declaration//GEN-END:variables
 
-public void cargarTabla(){
-    ProductoData pro = new ProductoData();
+    public void cargarTabla() {
+        ProductoData pro = new ProductoData();
 
-   for (Producto producto : pro.listaProductos()) {
+        for (Producto producto : pro.listaProductos()) {
 
             modelo.addRow(new Object[]{
-               producto.getIdProducto(),
+                producto.getIdProducto(),
                 producto.getNombreProducto(),
                 producto.getDescripcion(),
                 producto.getPrecioActual(),
                 producto.getStock(),
                 producto.isEstado()});
-            
 
-        
-            }
+        }
 
-}
+    }
 
- private void cargarCabezera() {
+    public void cargarTablaProve() {
+
+        ProveedorData pro = new ProveedorData();
+
+        for (Proveedor proveedor : pro.listaProveedores()) {
+
+            modelo1.addRow(new Object[]{
+                proveedor.getIdProveedor(),
+                proveedor.getRazonSocial(),
+                proveedor.getDomicilio(),
+                proveedor.getTelefono()});
+
+        }
+
+    }
+
+    private void cargarCabezeraProve() {
+
+        modelo1.addColumn("ID");
+        modelo1.addColumn("Razon Social");
+        modelo1.addColumn("Domicilio");
+        modelo1.addColumn("Telefono");
+
+        jtablaProveedor.setModel(modelo1);
+
+    }
+
+    private void cargarCabezera() {
 
         modelo.addColumn("Id");
         modelo.addColumn("Nombre");
@@ -575,7 +1030,7 @@ public void cargarTabla(){
         modelo.addColumn("Precio Actual");
         modelo.addColumn("Stock");
         modelo.addColumn("Estado");
-       jtablaProducto.setModel(modelo);
+        jtablaProducto.setModel(modelo);
 
     }
 

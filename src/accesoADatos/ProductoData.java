@@ -45,7 +45,7 @@ public class ProductoData {
         }
     }
     
-    public void actualizarProdcuto(Producto producto){
+    public void actualizarProducto(Producto producto){
         String sql = "UPDATE producto SET nombreProducto=?, descripcion=?, precioActual=?, stock=? WHERE idProducto = ? ";
         
         try {
@@ -67,27 +67,74 @@ public class ProductoData {
         }
     }
     
-    public void eliminarProducto(Producto producto){
-        String sql = "UPDATE producto SET estado=? WHERE idProducto = ? ";
+//    public void eliminarProducto(Producto producto){
+//        String sql = "UPDATE producto SET estado=? WHERE idProducto = ? ";
+//        
+//        try {
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.setBoolean(1, producto.isEstado());
+//            ps.setInt(2, producto.getIdProducto());
+//            
+//            int exito = ps.executeUpdate();
+//
+//            if (exito == 1) {
+//                JOptionPane.showMessageDialog(null, "Estado de producto actualizado");
+//            }
+//            ps.close();
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla 'producto'/"+ ex.getMessage());
+//        }
+//    }
+    
+    
+//   public void modificarProducto(Producto producto) {
+//    String sql = "UPDATE producto SET nombreProducto = ?, descripcion = ?,precioActual = ?, stock = ?, estado = ? WHERE idProducto = ?";
+//    
+//    try {
+//        PreparedStatement ps = con.prepareStatement(sql);
+//        ps.setString(1, producto.getNombreProducto());
+//        ps.setString(2, producto.getDescripcion());
+//        ps.setDouble(3, producto.getPrecioActual());
+//        ps.setInt(4, producto.getStock());
+//        ps.setBoolean(5, producto.isEstado());
+//        ps.setInt(6, producto.getIdProducto());
+//        
+//        int exito = ps.executeUpdate();
+//
+//        if (exito == 1) {
+//            JOptionPane.showMessageDialog(null, "Producto actualizado exitosamente");
+//        } else {
+//            JOptionPane.showMessageDialog(null, "No se encontró el producto con el ID especificado");
+//        }
+//
+//        ps.close();
+//    } catch (SQLException ex) {
+//        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'producto'/"+ ex.getMessage());
+//    }
+//}
+//    
+     public void eliminarProducto(int idProducto){
+    String sql = "UPDATE producto SET estado = 0 WHERE idProducto = ? ";
+    
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, idProducto);
         
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setBoolean(1, producto.isEstado());
-            ps.setInt(2, producto.getIdProducto());
-            
-            int exito = ps.executeUpdate();
+        int exito = ps.executeUpdate();
 
-            if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Estado de producto actualizado");
-            }
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla 'producto'/"+ ex.getMessage());
-        }
+        if (exito == 1) {
+            JOptionPane.showMessageDialog(null, "Estado de producto eliminado");
+        }         
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null,"Error al acceder a la tabla 'producto'/"+ ex.getMessage());
     }
+}
+
+    
     
     public List<Producto> listaProductos() {
-    String sql = "SELECT * FROM producto WHERE estado = 1";
+    String sql = "SELECT * FROM producto WHERE estado = 1";   
     List<Producto> productos = new ArrayList<>();
 
     try {
@@ -100,6 +147,7 @@ public class ProductoData {
             producto.setNombreProducto(rs.getString("nombreProducto")); 
             producto.setDescripcion(rs.getString("descripcion"));
             producto.setPrecioActual(rs.getDouble("precioActual"));
+            producto.setStock(rs.getInt("stock"));
             producto.setEstado(rs.getBoolean("estado"));
 
             productos.add(producto);
