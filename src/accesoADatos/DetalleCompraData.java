@@ -4,6 +4,7 @@ package accesoADatos;
 import entidades.Compra;
 import entidades.DetalleCompra;
 import entidades.Producto;
+import entidades.Proveedor;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -51,7 +52,7 @@ public class DetalleCompraData {
     
     
     //MÉTODOS PARA LISTAR
-    public List<DetalleCompra> productosPorFecha(LocalDate fecha) {
+    public /*List<DetalleCompra>*/void productosPorFecha(LocalDate fecha) {
         ArrayList<DetalleCompra> listaProductos = new ArrayList<DetalleCompra>();
 
         try {
@@ -86,10 +87,19 @@ public class DetalleCompraData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'detallecompra': " + ex.getMessage());
         }
-        return listaProductos;
+//        return listaProductos;
+
+        System.out.println("DETALLE DE PRODUCTOS COMPRADOS EL: "+fecha);
+        System.out.println("====================================");
+          for (DetalleCompra listaProducto : listaProductos) {
+            System.out.println("Cantidad: " + listaProducto.getCantidad());
+            System.out.println("Producto: " + listaProducto.getProducto().getNombreProducto());
+            System.out.println("Precio: " + listaProducto.getPrecioCosto());
+            System.out.println("_______________________________");
+        }
     }
     
-    public List<DetalleCompra> comprasPorProveedor(int idProveedor){
+    public /*List<DetalleCompra>*/ void comprasPorProveedor(int idProveedor){
         ArrayList<DetalleCompra> listaCompras = new ArrayList<DetalleCompra>();
 
         try {
@@ -128,8 +138,75 @@ public class DetalleCompraData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'detallecompra': " + ex.getMessage());
         }
-        return listaCompras;
+//        return listaCompras;
+        System.out.println("DETALLE DE COMPRAS DEL PROVEEDOR ID: "+idProveedor);
+        System.out.println("====================================");
+        for (DetalleCompra listaCompra : listaCompras) {
+            System.out.println("ID Compra"+listaCompra.getCompra().getIdCompra());
+            System.out.println("Producto: "+listaCompra.getProducto().getNombreProducto());
+            System.out.println("Cantidad: "+listaCompra.getCantidad());
+            System.out.println("Precio: "+listaCompra.getPrecioCosto());
+            System.out.println("Fecha: "+listaCompra.getCompra().getFecha());
+            System.out.println("_____________________________");
+        }
     }
     
-    
+    public /*List<DetalleCompra>*/ void productosPorCompra(int idCompra) {
+        ArrayList<DetalleCompra> listaProductos = new ArrayList<DetalleCompra>();
+
+        try {
+            String sql = "SELECT detallecompra.idProducto, producto.nombreProducto, producto.stock, precioCosto, proveedor.razonSocial "
+                    + "FROM detallecompra "
+                    + "JOIN producto ON producto.idProducto=detallecompra.idProducto "
+                    + "JOIN compra ON compra.idCompra=detallecompra.idCompra "
+                    + "JOIN proveedor ON proveedor.idProveedor=compra.idProveedor "
+                    + "WHERE detallecompra.idCompra=?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idCompra);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                DetalleCompra detalleCompra = new DetalleCompra();
+
+                Producto producto = new Producto();
+
+                producto.setIdProducto(rs.getInt("idProducto"));
+                detalleCompra.setProducto(producto);
+
+                producto.setNombreProducto(rs.getString("nombreProducto"));
+                detalleCompra.setProducto(producto);
+
+                producto.setStock(rs.getInt("stock"));
+                detalleCompra.setProducto(producto);
+
+                detalleCompra.setPrecioCosto(rs.getDouble("precioCosto"));
+
+                Proveedor proveedor = new Proveedor();
+                proveedor.setRazonSocial(rs.getString("razonSocial"));
+                Compra compra = new Compra();
+                compra.setProveedor(proveedor);
+                detalleCompra.setCompra(compra);
+
+                listaProductos.add(detalleCompra);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'detallecompra': " + ex.getMessage());
+        }
+
+//        return listaProductos;
+
+            System.out.println("Detalle de compra ID: "+idCompra);
+            System.out.println("====================================");    
+        for (DetalleCompra listaProducto : listaProductos) {
+            System.out.println("ID Producto: "+listaProducto.getProducto().getIdProducto());
+            System.out.println("Producto: "+listaProducto.getProducto().getNombreProducto());
+            System.out.println("Stock "+listaProducto.getProducto().getStock());
+            System.out.println("Precio: "+listaProducto.getPrecioCosto());
+            System.out.println("Proveedor: "+listaProducto.getCompra().getProveedor().getRazonSocial());
+            System.out.println("_______________________________");
+        }
+    }
+
 }
