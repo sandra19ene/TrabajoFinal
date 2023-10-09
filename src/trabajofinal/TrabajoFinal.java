@@ -1,21 +1,24 @@
 
 package trabajofinal;
 
+import accesoADatos.CompraData;
 import accesoADatos.ProductoData;
 import accesoADatos.ProveedorData;
 import entidades.Producto;
 import entidades.Proveedor;
+import java.time.LocalDate;
+import java.time.Month;
 
 public class TrabajoFinal {
 
     public static void main(String[] args) {
-        ProductoData proData = new ProductoData();    
-        Producto prod = new Producto("Smart TV 32", "TV Smart 32", 99000.55, 400, true);
-        proData.guardarProducto(prod);
+   //     ProductoData proData = new ProductoData();    
+  //      Producto prod = new Producto("Smart TV 32", "TV Smart 32", 99000.55, 400, true);
+  //      proData.guardarProducto(prod);
 //        proData.actualizarProducto(prod);
 //        proData.eliminarProducto(prod);
 
-       /// ProveedorData provData = new ProveedorData();
+       // ProveedorData provData = new ProveedorData();
        // Proveedor prov = new Proveedor(2,"Fábrica Aire Acond", "Av. La Plata 1900", "114444777");
 //        provData.guardarProveedor(prov);
 //        provData.actualizarProveedor(prov);
@@ -29,7 +32,23 @@ public class TrabajoFinal {
 //        
 //ProductoData proData = new ProductoData();
 //        
-//        proData.actualizarProducto(prod);
+//        proData.actualizarProducto(prod)
+
+       // Proveedor pro = new Proveedor();
+       
+//        ProveedorData pro = new ProveedorData();
+//         for (Proveedor p: pro.listaProveedores()) {
+//             System.out.println(p.getIdProveedor());
+//             System.out.println(p.getRazonSocial());
+//             System.out.println(p.getDomicilio());
+//         
+//         
+//         
+//         }
+
+//            CompraData c=new CompraData();
+//            
+//            c.realizarCompra(5, LocalDate.of(2023, Month.MARCH, 2));
 
     }
     

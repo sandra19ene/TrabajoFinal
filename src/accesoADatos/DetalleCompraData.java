@@ -209,4 +209,52 @@ public class DetalleCompraData {
         }
     }
 
+    public /*List<DetalleCompra>*/ void productoMasVendidoPorFechas(LocalDate fecha1, LocalDate fecha2){
+        ArrayList<DetalleCompra> listaProductos = new ArrayList<DetalleCompra>();
+
+        try {
+            String sql="SELECT detallecompra.idProducto, producto.nombreProducto, COUNT(*) AS total "
+                    + "FROM detallecompra "
+                    + "JOIN producto ON producto.idProducto=detallecompra.idProducto "
+                    + "JOIN compra ON compra.idCompra=detallecompra.idCompra "
+                    + "WHERE compra.fecha BETWEEN ? AND ? "
+                    + "GROUP BY producto.nombreProducto "
+                    + "ORDER BY total DESC "
+                    + "LIMIT 1";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDate(1, Date.valueOf(fecha1));
+            ps.setDate(2, Date.valueOf(fecha2));
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                DetalleCompra detalleCompra = new DetalleCompra();
+
+                Producto producto = new Producto();
+
+                producto.setIdProducto(rs.getInt("idProducto"));
+                detalleCompra.setProducto(producto);
+
+                producto.setNombreProducto(rs.getString("nombreProducto"));
+                detalleCompra.setProducto(producto);
+                
+                int total = rs.getInt("total");
+                
+                listaProductos.add(detalleCompra);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erros al acceder a la tabla 'detalleproducto'/ "+ ex.getMessage());
+        }
+//        return listaProductos;
+        System.out.println("Producto más comprado entre fechas: "+fecha1+" y "+fecha2);
+            System.out.println("====================================");    
+        for (DetalleCompra listaProducto : listaProductos) {
+            System.out.println("ID Producto: "+listaProducto.getProducto().getIdProducto());
+            System.out.println("Producto: "+listaProducto.getProducto().getNombreProducto()); 
+            System.out.println("_______________________________");
+        }
+        
+    }
+    
 }

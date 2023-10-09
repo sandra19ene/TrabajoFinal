@@ -2,6 +2,7 @@
 package accesoADatos;
 
 import entidades.Producto;
+import entidades.Proveedor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 
@@ -20,7 +22,7 @@ public class ProductoData {
     }
     
     public void guardarProducto(Producto producto){
-        String sql = "INSERT INTO producto (nombreProducto, descripcion, precioActual, stock, estado) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO producto (nombreProducto, descripcion, precioActual, stock, categoria) VALUES (?,?,?,?,?)";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -28,7 +30,8 @@ public class ProductoData {
             ps.setString(2, producto.getDescripcion());
             ps.setDouble(3, producto.getPrecioActual());
             ps.setInt(4, producto.getStock());
-            ps.setBoolean(5, producto.isEstado());
+            ps.setString(5, producto.getCategoria());
+           
             ps.executeUpdate();
             
             ResultSet rs = ps.getGeneratedKeys();
@@ -46,15 +49,19 @@ public class ProductoData {
     }
     
     public void actualizarProducto(Producto producto){
-        String sql = "UPDATE producto SET nombreProducto=?, descripcion=?, precioActual=?, stock=? WHERE idProducto = ? ";
+        String sql = "UPDATE producto SET nombreProducto=?, descripcion=?, precioActual=?, stock=?,categoria=? WHERE idProducto = ? ";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
+            
+          
             ps.setString(1, producto.getNombreProducto());
             ps.setString(2, producto.getDescripcion());
             ps.setDouble(3, producto.getPrecioActual());
             ps.setInt(4, producto.getStock());
-            ps.setInt(5, producto.getIdProducto());
+            ps.setString(5, producto.getCategoria());
+            ps.setInt(6, producto.getIdProducto());
+            
             
             int exito = ps.executeUpdate();
 
@@ -134,7 +141,7 @@ public class ProductoData {
     
     
     public List<Producto> listaProductos() {
-    String sql = "SELECT * FROM producto WHERE estado = 1";   
+    String sql = "SELECT * FROM producto ";   
     List<Producto> productos = new ArrayList<>();
 
     try {
@@ -143,12 +150,14 @@ public class ProductoData {
 
         while (rs.next()) {
             Producto producto = new Producto();
+       
             producto.setIdProducto(rs.getInt("idProducto")); 
             producto.setNombreProducto(rs.getString("nombreProducto")); 
             producto.setDescripcion(rs.getString("descripcion"));
             producto.setPrecioActual(rs.getDouble("precioActual"));
             producto.setStock(rs.getInt("stock"));
-            producto.setEstado(rs.getBoolean("estado"));
+            producto.setCategoria(rs.getString("categoria"));
+            
 
             productos.add(producto);
         }
@@ -162,5 +171,31 @@ public class ProductoData {
 
     return productos;
 }
+    
+//     public void consultaProveedor (JComboBox proveedor) {
+//    String sql = "SELECT nombre FROM proveedor ";   
+//    List<Producto> productos = new ArrayList<>();
+//
+//    try {
+//        PreparedStatement ps = con.prepareStatement(sql);
+//        ResultSet rs = ps.executeQuery();
+//
+//        while (rs.next()) {
+//           
+//       
+//            
+//           proveedor.addItem(rs.getString("razonSocial"));
+//            
+//        }
+//
+//        rs.close(); 
+//        ps.close(); 
+//
+//    } catch (SQLException ex) {
+//        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto: " + ex.getMessage());
+//    }
+//
+//    
+//}
     
 }

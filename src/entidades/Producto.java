@@ -8,26 +8,26 @@ public class Producto {
     String descripcion;
     double precioActual;
     int stock;
-    boolean estado;
+    String categoria;
 
     public Producto() {
     }
 
-    public Producto(String nombreProducto, String descripcion, double precioActual, int stock, boolean estado) {
+    public Producto(String nombreProducto, String descripcion, double precioActual, int stock, String categoria) {
         this.nombreProducto = nombreProducto;
         this.descripcion = descripcion;
         this.precioActual = precioActual;
         this.stock = stock;
-        this.estado = estado;
+        this.categoria = categoria;
     }
 
-    public Producto(int idProducto, String nombreProducto, String descripcion, double precioActual, int stock, boolean estado) {
+    public Producto(int idProducto, String nombreProducto, String descripcion, double precioActual, int stock, String categoria) {
         this.idProducto = idProducto;
         this.nombreProducto = nombreProducto;
         this.descripcion = descripcion;
         this.precioActual = precioActual;
         this.stock = stock;
-        this.estado = estado;
+        this.categoria = categoria;
     }
 
     public int getIdProducto() {
@@ -70,17 +70,17 @@ public class Producto {
         this.stock = stock;
     }
 
-    public boolean isEstado() {
-        return estado;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     @Override
     public String toString() {
-        return "Producto{" + "idProducto=" + idProducto + ", nombreProducto=" + nombreProducto + ", descripcion=" + descripcion + ", precioActual=" + precioActual + ", stock=" + stock + ", estado=" + estado + '}';
+        return "Producto{" + "idProducto=" + idProducto + ", nombreProducto=" + nombreProducto + ", descripcion=" + descripcion + ", precioActual=" + precioActual + ", stock=" + stock + ", categoria=" + categoria + '}';
     }
     
     

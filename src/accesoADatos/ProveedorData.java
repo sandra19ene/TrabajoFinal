@@ -143,4 +143,36 @@ public class ProveedorData {
         
         return prove;
     }
+    
+    
+    
+    public Proveedor buscarProveedor( String razonSocial) {
+    String sql = "SELECT  * FROM proveedor WHERE razonSocial=? ";
+    Proveedor proveedor = null;
+
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        
+        ps.setString(1, razonSocial);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            proveedor = new Proveedor();
+            proveedor.setIdProveedor(rs.getInt("idProveedor"));
+            proveedor.setRazonSocial(rs.getString("razonSocial"));
+            proveedor.setDomicilio(rs.getString("domicilio"));
+            proveedor.setTelefono(rs.getString("telefono"));
+        } else {
+            JOptionPane.showMessageDialog(null, "La proveedor no existe");
+        }
+        ps.close();
+
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumnos" + ex.getMessage());
+    }
+    return proveedor;
+}
+
+
+    
 }

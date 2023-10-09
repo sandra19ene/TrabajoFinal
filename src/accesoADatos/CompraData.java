@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 public class CompraData {
@@ -17,13 +18,14 @@ public class CompraData {
         con = Conexion.getConexion();
     }
 
-    public void realizarCompra(int idProveedor, Compra comp) {
+    public void realizarCompra(int idProveedor, LocalDate fecha) {
+        Compra comp=new Compra();
         String sql = "INSERT INTO compra (idProveedor, fecha) VALUES (?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             ps.setInt(1, idProveedor);
-            ps.setDate(2, Date.valueOf(comp.getFecha()));
+            ps.setDate(2, Date.valueOf(fecha));
             ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys();
