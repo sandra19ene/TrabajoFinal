@@ -20,7 +20,34 @@ public class ProductoData {
     public ProductoData() {
         con = Conexion.getConexion();
     }
-    
+    public Producto buscarProducto(String nombre){
+        String sql = "SELECT  * FROM producto WHERE nombreProducto=? ";
+        Producto produc = null;
+
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        
+        ps.setString(1, nombre);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            produc = new Producto();
+            produc.setIdProducto(rs.getInt("idProducto"));
+            produc.setNombreProducto(rs.getString("nombreProducto"));
+            produc.setDescripcion(rs.getString("descripcion"));
+            produc.setPrecioActual(rs.getDouble("precioActual"));
+            produc.setStock(rs.getInt("stock"));
+            produc.setCategoria(rs.getString("categoria"));
+        } else {
+            JOptionPane.showMessageDialog(null, "El producto no existe");
+        }
+        ps.close();
+
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto" + ex.getMessage());
+    }
+    return produc;
+    }
     public void guardarProducto(Producto producto){
         String sql = "INSERT INTO producto (nombreProducto, descripcion, precioActual, stock, categoria) VALUES (?,?,?,?,?)";
         
@@ -121,7 +148,7 @@ public class ProductoData {
 //}
 //    
      public void eliminarProducto(int idProducto){
-    String sql = "UPDATE producto SET estado = 0 WHERE idProducto = ? ";
+    String sql = "DELETE FROM producto WHERE idProducto = ? ";
     
     try {
         PreparedStatement ps = con.prepareStatement(sql);
@@ -130,7 +157,7 @@ public class ProductoData {
         int exito = ps.executeUpdate();
 
         if (exito == 1) {
-            JOptionPane.showMessageDialog(null, "Estado de producto eliminado");
+            JOptionPane.showMessageDialog(null, "Producto eliminado con éxito");
         }         
         ps.close();
     } catch (SQLException ex) {
