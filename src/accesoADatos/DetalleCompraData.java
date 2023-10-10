@@ -24,13 +24,13 @@ public class DetalleCompraData {
         con = Conexion.getConexion();
     }
     
-    public void generarDetalleCompra(DetalleCompra detComp, int idCompra, int idProducto){
+    public void generarDetalleCompra(int cantidad, double precio, int idCompra, int idProducto){
         String sql = "INSERT INTO detallecompra (cantidad, precioCosto, idCompra, idProducto) VALUES (?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-
-            ps.setInt(1, detComp.getCantidad());
-            ps.setDouble(2, detComp.getPrecioCosto());
+            int idDetalle=0;
+            ps.setInt(1, cantidad);
+            ps.setDouble(2, precio);
             ps.setInt(3, idCompra);
             ps.setInt(4, idProducto);
 
@@ -39,7 +39,7 @@ public class DetalleCompraData {
             ResultSet rs = ps.getGeneratedKeys();
 
             if (rs.next()) {
-                detComp.setIdDetalle(rs.getInt(1));
+                idDetalle = rs.getInt(1);
                 JOptionPane.showMessageDialog(null, "Detalle de Compra generado.");
 
             }

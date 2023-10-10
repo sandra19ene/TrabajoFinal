@@ -8,6 +8,7 @@ package vistas;
 import accesoADatos.CompraData;
 import accesoADatos.ProductoData;
 import accesoADatos.ProveedorData;
+import entidades.Compra;
 import entidades.Producto;
 import entidades.Proveedor;
 import java.awt.Color;
@@ -981,7 +982,7 @@ public class menu extends javax.swing.JFrame {
         
         int t= m.getIdProveedor();
         
-         com.realizarCompra(t, LocalDate.now());
+        com.realizarCompra(t, LocalDate.now());       
     }//GEN-LAST:event_jcProductoMouseClicked
 
     /**
@@ -1166,5 +1167,5 @@ public class menu extends javax.swing.JFrame {
 
         }
     }
-
+    
 }
