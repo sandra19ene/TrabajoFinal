@@ -6,6 +6,7 @@
 package vistas;
 
 import accesoADatos.CompraData;
+import accesoADatos.DetalleCompraData;
 import accesoADatos.ProductoData;
 import accesoADatos.ProveedorData;
 import entidades.Compra;
@@ -146,7 +147,11 @@ public class menu extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jcProveedor1 = new javax.swing.JComboBox<>();
-        jtidProve = new javax.swing.JTextField();
+        btnComprar = new javax.swing.JButton();
+        jTCantidad = new javax.swing.JTextField();
+        jTPrecioCompra = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
         PanelConsultas = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -572,12 +577,12 @@ public class menu extends javax.swing.JFrame {
         jlFecha.setForeground(new java.awt.Color(0, 0, 0));
         jlFecha.setAlignmentY(0.0F);
         jlFecha.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(102, 102, 102)));
-        PanelCompra.add(jlFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, 170, 30));
+        PanelCompra.add(jlFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 60, 170, 30));
 
         jLabel10.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("  FECHA DE COMPRA");
-        PanelCompra.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, 140, -1));
+        PanelCompra.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, 170, -1));
 
         jcProducto.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jcProducto.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -590,12 +595,12 @@ public class menu extends javax.swing.JFrame {
                 jcProductoActionPerformed(evt);
             }
         });
-        PanelCompra.add(jcProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 260, 30));
+        PanelCompra.add(jcProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 320, 30));
 
         jLabel11.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("PRODUCTO:");
-        PanelCompra.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 80, 30));
+        PanelCompra.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 100, 30));
 
         jLabel12.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
@@ -613,8 +618,27 @@ public class menu extends javax.swing.JFrame {
                 jcProveedor1ActionPerformed(evt);
             }
         });
-        PanelCompra.add(jcProveedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 260, 30));
-        PanelCompra.add(jtidProve, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 70, -1));
+        PanelCompra.add(jcProveedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 320, 30));
+
+        btnComprar.setText("VUI");
+        btnComprar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnComprarMouseClicked(evt);
+            }
+        });
+        PanelCompra.add(btnComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, 170, 30));
+        PanelCompra.add(jTCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 80, 30));
+        PanelCompra.add(jTPrecioCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 80, 30));
+
+        jLabel20.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel20.setText("CANTIDAD:");
+        PanelCompra.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+
+        jLabel26.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel26.setText("PRECIO COMPRA:");
+        PanelCompra.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, -1, 20));
 
         jTabbedPane1.addTab("Compra de Productos", PanelCompra);
 
@@ -973,17 +997,47 @@ public class menu extends javax.swing.JFrame {
 
     private void jcProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcProductoMouseClicked
         
-        CompraData com = new CompraData();
+//        CompraData com = new CompraData();
+//        ProveedorData prove=new ProveedorData();
+//        
+//         String r =  (String) jcProveedor1.getSelectedItem();
+//
+//        Proveedor m =prove.buscarProveedor(r);
+//        
+//        int t= m.getIdProveedor();
+//        
+//        com.realizarCompra(t, LocalDate.now());       
+    }//GEN-LAST:event_jcProductoMouseClicked
+
+    private void btnComprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComprarMouseClicked
+        // TODO add your handling code here:
+         CompraData com = new CompraData();
         ProveedorData prove=new ProveedorData();
+        DetalleCompraData dCompra= new DetalleCompraData();
+        
         
          String r =  (String) jcProveedor1.getSelectedItem();
 
-        Proveedor m =prove.buscarProveedor(r);
+        Proveedor m = prove.buscarProveedor(r);
         
         int t= m.getIdProveedor();
         
-        com.realizarCompra(t, LocalDate.now());       
-    }//GEN-LAST:event_jcProductoMouseClicked
+        com.realizarCompra(t, LocalDate.now());
+        
+        int idComp = com.obtenerIdCompra();
+        
+        ProductoData prod = new ProductoData();
+        
+        String p = (String) jcProducto.getSelectedItem();
+        
+        Producto produc = prod.buscarProducto(p);
+        
+        int idProd = produc.getIdProducto();
+                        
+        dCompra.generarDetalleCompra(Integer.parseInt(jTCantidad.getText()),Double.parseDouble(jTPrecioCompra.getText()) , idComp, idProd);
+       
+               
+    }//GEN-LAST:event_btnComprarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1025,6 +1079,7 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JPanel PanelConsultas;
     private javax.swing.JPanel PanelProducto;
     private javax.swing.JPanel PanelProveedores;
+    private javax.swing.JButton btnComprar;
     private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBEliminarprove;
     private javax.swing.JButton jBGuardarProducto;
@@ -1044,11 +1099,13 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1062,6 +1119,8 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTextField jTCantidad;
+    private javax.swing.JTextField jTPrecioCompra;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable2;
     private javax.swing.JComboBox<String> jcProducto;
@@ -1080,7 +1139,6 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JTextField jtTelefonoProveedor;
     private javax.swing.JTable jtablaProducto;
     private javax.swing.JTable jtablaProveedor;
-    private javax.swing.JTextField jtidProve;
     private javax.swing.JPanel menuPrincipal;
     // End of variables declaration//GEN-END:variables
 
