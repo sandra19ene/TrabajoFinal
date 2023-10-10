@@ -117,7 +117,7 @@ public class ProveedorData {
 }
     
     public List<Proveedor> listaProveedores() {
-        String sql = "SELECT * FROM proveedor ";
+        String sql = "SELECT razonSocial FROM proveedor ";
         List<Proveedor> prove = new ArrayList<>();
         
         try {
@@ -126,10 +126,9 @@ public class ProveedorData {
             
             while (rs.next()) {
                 Proveedor p = new Proveedor();
-                p.setIdProveedor(rs.getInt("idProveedor"));
+               
                 p.setRazonSocial(rs.getString("razonSocial"));
-                p.setDomicilio(rs.getString("domicilio"));
-                p.setTelefono(rs.getString("telefono"));
+               
                 
                 prove.add(p);
             }

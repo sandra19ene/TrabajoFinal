@@ -579,6 +579,11 @@ public class menu extends javax.swing.JFrame {
         PanelCompra.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, 140, -1));
 
         jcProducto.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jcProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jcProductoMouseClicked(evt);
+            }
+        });
         jcProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcProductoActionPerformed(evt);
@@ -954,23 +959,30 @@ public class menu extends javax.swing.JFrame {
 
     private void jcProveedor1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcProveedor1MouseClicked
 
-        //        CompraData com = new CompraData();
-//        ProveedorData prove=new ProveedorData();
-        
-//         String r =  (String) jcProveedor1.getSelectedItem();
-//
-//        Proveedor m =prove.buscarProveedor(r);
-//        
-//        int t= m.getIdProveedor();
-//        
-//         com.realizarCompra(t, LocalDate.now());
+    
 
 
     }//GEN-LAST:event_jcProveedor1MouseClicked
 
     private void jcProveedor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcProveedor1ActionPerformed
 
+      
+        
     }//GEN-LAST:event_jcProveedor1ActionPerformed
+
+    private void jcProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcProductoMouseClicked
+        
+        CompraData com = new CompraData();
+        ProveedorData prove=new ProveedorData();
+        
+         String r =  (String) jcProveedor1.getSelectedItem();
+
+        Proveedor m =prove.buscarProveedor(r);
+        
+        int t= m.getIdProveedor();
+        
+         com.realizarCompra(t, LocalDate.now());
+    }//GEN-LAST:event_jcProductoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1140,7 +1152,7 @@ public class menu extends javax.swing.JFrame {
         ProveedorData prove = new ProveedorData();
         for (Proveedor proveedor : prove.listaProveedores()) {
 
-            jcProveedor1.addItem(proveedor.getIdProveedor() + " " + proveedor.getRazonSocial());
+            jcProveedor1.addItem(proveedor.getRazonSocial());
 
         }
     }
