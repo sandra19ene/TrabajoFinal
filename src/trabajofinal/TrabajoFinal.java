@@ -2,8 +2,10 @@
 package trabajofinal;
 
 import accesoADatos.CompraData;
+import accesoADatos.DetalleCompraData;
 import accesoADatos.ProductoData;
 import accesoADatos.ProveedorData;
+import entidades.DetalleCompra;
 import entidades.Producto;
 import entidades.Proveedor;
 import java.time.LocalDate;
@@ -49,7 +51,24 @@ public class TrabajoFinal {
 //            CompraData c=new CompraData();
 //            
 //            c.realizarCompra(5, LocalDate.of(2023, Month.MARCH, 2));
+//
+//       CompraData c=new CompraData();
+//       
+//       for(Compra co: c. ){
+       
+       
 
-    }
+// ProductoData prod = new ProductoData();
+// String nom="TV LED";
+// 
+//        System.out.println( prod.buscarProducto(nom));
+
+    DetalleCompraData d = new DetalleCompraData();
+        System.out.println(d.obtenerDetalleCompraFull(1));
+       
+       }
+                
+
+    //}
     
 }

@@ -78,6 +78,8 @@ public class DetalleCompra {
     public String toString() {
         return "cantidad=" + cantidad + ", precioCosto=" + precioCosto + ", compra=" + compra + ", producto=" + producto;
     }
+
+    
     
     
     

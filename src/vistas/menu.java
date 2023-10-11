@@ -10,6 +10,7 @@ import accesoADatos.DetalleCompraData;
 import accesoADatos.ProductoData;
 import accesoADatos.ProveedorData;
 import entidades.Compra;
+import entidades.DetalleCompra;
 import entidades.Producto;
 import entidades.Proveedor;
 import java.awt.Color;
@@ -28,7 +29,27 @@ public class menu extends javax.swing.JFrame {
 
     ProductoData pro = new ProductoData();
 
-    //private DefaultTableModel modelo = new DefaultTableModel();
+    private DefaultTableModel modelo2 = new DefaultTableModel() {
+        public boolean isCellEditable(int row, int column) {
+            if (column == 0) {
+                return false;
+            } else if (column == 1) {
+                return false;
+            } else if (column == 2) {
+                return false;
+            } else if (column == 3) {
+                return false;
+            } else if (column == 4) {
+                return false;
+            } else if (column == 5) {
+                return false;
+
+            } else {
+                return true;
+            }
+        }
+    };
+
     private DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int row, int column) {
             if (column == 0) {
@@ -70,6 +91,8 @@ public class menu extends javax.swing.JFrame {
     public menu() {
         initComponents();
 
+        
+        cargarCabezeraDetalle();
         cargarCabezera();
         cargarTabla();
 
@@ -77,6 +100,7 @@ public class menu extends javax.swing.JFrame {
         cargarTablaProve();
         cargarComboProve();
         cargarComboProdu();
+        
         jlFecha.setText(fechaActual());
 
     }
@@ -140,7 +164,7 @@ public class menu extends javax.swing.JFrame {
         jBModificarProve = new javax.swing.JButton();
         PanelCompra = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jtCompra = new javax.swing.JTable();
+        jtDetalleCompra = new javax.swing.JTable();
         jlFecha = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jcProducto = new javax.swing.JComboBox<>();
@@ -558,7 +582,7 @@ public class menu extends javax.swing.JFrame {
         PanelCompra.setBackground(new java.awt.Color(255, 255, 255));
         PanelCompra.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jtCompra.setModel(new javax.swing.table.DefaultTableModel(
+        jtDetalleCompra.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -569,7 +593,7 @@ public class menu extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jtCompra);
+        jScrollPane3.setViewportView(jtDetalleCompra);
 
         PanelCompra.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 830, 140));
 
@@ -624,6 +648,11 @@ public class menu extends javax.swing.JFrame {
         btnComprar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnComprarMouseClicked(evt);
+            }
+        });
+        btnComprar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComprarActionPerformed(evt);
             }
         });
         PanelCompra.add(btnComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, 170, 30));
@@ -984,19 +1013,16 @@ public class menu extends javax.swing.JFrame {
 
     private void jcProveedor1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcProveedor1MouseClicked
 
-    
-
 
     }//GEN-LAST:event_jcProveedor1MouseClicked
 
     private void jcProveedor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcProveedor1ActionPerformed
 
-      
-        
+
     }//GEN-LAST:event_jcProveedor1ActionPerformed
 
     private void jcProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcProductoMouseClicked
-        
+
 //        CompraData com = new CompraData();
 //        ProveedorData prove=new ProveedorData();
 //        
@@ -1011,33 +1037,41 @@ public class menu extends javax.swing.JFrame {
 
     private void btnComprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComprarMouseClicked
         // TODO add your handling code here:
-         CompraData com = new CompraData();
-        ProveedorData prove=new ProveedorData();
-        DetalleCompraData dCompra= new DetalleCompraData();
-        
-        
-         String r =  (String) jcProveedor1.getSelectedItem();
+      
+//               
+    }//GEN-LAST:event_btnComprarMouseClicked
+
+    private void btnComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprarActionPerformed
+
+        CompraData com = new CompraData();
+        ProveedorData prove = new ProveedorData();
+        DetalleCompraData dCompra = new DetalleCompraData();
+
+        String r = (String) jcProveedor1.getSelectedItem();
 
         Proveedor m = prove.buscarProveedor(r);
-        
-        int t= m.getIdProveedor();
-        
+
+        int t = m.getIdProveedor();
+
         com.realizarCompra(t, LocalDate.now());
-        
+
         int idComp = com.obtenerIdCompra();
-        
+//---------------------------------------------------------------------------        
         ProductoData prod = new ProductoData();
-        
+
         String p = (String) jcProducto.getSelectedItem();
-        
+
         Producto produc = prod.buscarProducto(p);
-        
+
         int idProd = produc.getIdProducto();
-                        
-        dCompra.generarDetalleCompra(Integer.parseInt(jTCantidad.getText()),Double.parseDouble(jTPrecioCompra.getText()) , idComp, idProd);
+
+        DetalleCompraData de = new DetalleCompraData();
+
+        dCompra.generarDetalleCompra(Integer.parseInt(jTCantidad.getText()), Double.parseDouble(jTPrecioCompra.getText()), idComp, idProd);
+       cargarTablaDetalle();
        
-               
-    }//GEN-LAST:event_btnComprarMouseClicked
+       
+    }//GEN-LAST:event_btnComprarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1130,8 +1164,8 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JPanel jpBotonConsultas;
     private javax.swing.JPanel jpBotonProductos;
     private javax.swing.JPanel jpBotonProveedores;
-    private javax.swing.JTable jtCompra;
     private javax.swing.JTextField jtDescripcion;
+    private javax.swing.JTable jtDetalleCompra;
     private javax.swing.JTextField jtDomicilioProveedor;
     private javax.swing.JTextField jtNombreProducto;
     private javax.swing.JTextField jtPrecio;
@@ -1170,8 +1204,37 @@ public class menu extends javax.swing.JFrame {
                 proveedor.getRazonSocial(),
                 proveedor.getDomicilio(),
                 proveedor.getTelefono()});
+        }
+    }
+
+    public void cargarTablaDetalle() {
+
+        DetalleCompraData deta = new DetalleCompraData();
+        int iddeta = deta.obtenerIdDetalle();
+        for (DetalleCompra d : deta.obtenerDetalleCompraFull(iddeta)) {
+
+            modelo1.addRow(new Object[]{
+                d.getCompra().getIdCompra(),
+                d.getCompra().getFecha(),
+                d.getProducto().getNombreProducto(),
+                d.getCantidad(),
+                d.getPrecioCosto(),
+                d.getCompra().getProveedor().getRazonSocial()});
 
         }
+
+    }
+
+    private void cargarCabezeraDetalle() {
+
+        modelo2.addColumn("ID Compra");
+        modelo2.addColumn("Fecha");
+        modelo2.addColumn("Producto");
+        modelo2.addColumn("Cantidad");
+        modelo2.addColumn("Precio de Costo");
+        modelo2.addColumn("Proveedor");
+
+        jtDetalleCompra.setModel(modelo2);
 
     }
 
@@ -1221,9 +1284,9 @@ public class menu extends javax.swing.JFrame {
         ProductoData produ = new ProductoData();
         for (Producto producto : produ.listaProductos()) {
 
-            jcProducto.addItem(" " + producto.getNombreProducto());
+            jcProducto.addItem(producto.getNombreProducto());
 
         }
     }
-    
+
 }
