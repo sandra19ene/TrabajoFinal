@@ -91,8 +91,6 @@ public class menu extends javax.swing.JFrame {
     public menu() {
         initComponents();
 
-        
-        cargarCabezeraDetalle();
         cargarCabezera();
         cargarTabla();
 
@@ -100,7 +98,7 @@ public class menu extends javax.swing.JFrame {
         cargarTablaProve();
         cargarComboProve();
         cargarComboProdu();
-        
+
         jlFecha.setText(fechaActual());
 
     }
@@ -176,6 +174,7 @@ public class menu extends javax.swing.JFrame {
         jTPrecioCompra = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
+        btnAgregarACarrito = new javax.swing.JButton();
         PanelConsultas = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -301,6 +300,11 @@ public class menu extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("COMPRA DE PRODUCTOS");
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
         jpBotonCompra.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 320, 30));
 
         jPanel1.add(jpBotonCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 320, 70));
@@ -320,12 +324,12 @@ public class menu extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("_________________________________");
         jLabel9.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        PanelProducto.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 250, 30));
+        PanelProducto.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 230, 30));
 
         jLabel14.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(51, 51, 51));
         jLabel14.setText("NOMBRE DEL PRODUCTO:");
-        PanelProducto.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 170, -1));
+        PanelProducto.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 190, -1));
 
         jLabel15.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(51, 51, 51));
@@ -355,7 +359,7 @@ public class menu extends javax.swing.JFrame {
                 jtNombreProductoActionPerformed(evt);
             }
         });
-        PanelProducto.add(jtNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 220, -1));
+        PanelProducto.add(jtNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 200, -1));
 
         jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setText("__________");
@@ -668,6 +672,14 @@ public class menu extends javax.swing.JFrame {
         jLabel26.setForeground(new java.awt.Color(0, 0, 0));
         jLabel26.setText("PRECIO COMPRA:");
         PanelCompra.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, -1, 20));
+
+        btnAgregarACarrito.setText("AGREGAR A CARRITO");
+        btnAgregarACarrito.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarACarritoMouseClicked(evt);
+            }
+        });
+        PanelCompra.add(btnAgregarACarrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, 170, -1));
 
         jTabbedPane1.addTab("Compra de Productos", PanelCompra);
 
@@ -1023,21 +1035,11 @@ public class menu extends javax.swing.JFrame {
 
     private void jcProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcProductoMouseClicked
 
-//        CompraData com = new CompraData();
-//        ProveedorData prove=new ProveedorData();
-//        
-//         String r =  (String) jcProveedor1.getSelectedItem();
-//
-//        Proveedor m =prove.buscarProveedor(r);
-//        
-//        int t= m.getIdProveedor();
-//        
-//        com.realizarCompra(t, LocalDate.now());       
     }//GEN-LAST:event_jcProductoMouseClicked
 
     private void btnComprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComprarMouseClicked
         // TODO add your handling code here:
-      
+
 //               
     }//GEN-LAST:event_btnComprarMouseClicked
 
@@ -1053,8 +1055,7 @@ public class menu extends javax.swing.JFrame {
 
         int t = m.getIdProveedor();
 
-        com.realizarCompra(t, LocalDate.now());
-
+        //com.realizarCompra(t, LocalDate.now());
         int idComp = com.obtenerIdCompra();
 //---------------------------------------------------------------------------        
         ProductoData prod = new ProductoData();
@@ -1065,13 +1066,25 @@ public class menu extends javax.swing.JFrame {
 
         int idProd = produc.getIdProducto();
 
-        DetalleCompraData de = new DetalleCompraData();
-
+        //DetalleCompraData de = new DetalleCompraData();
         dCompra.generarDetalleCompra(Integer.parseInt(jTCantidad.getText()), Double.parseDouble(jTPrecioCompra.getText()), idComp, idProd);
-       cargarTablaDetalle();
-       
-       
+        cargarCabezeraDetalle();
+        cargarTablaDetalle();
+
+
     }//GEN-LAST:event_btnComprarActionPerformed
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void btnAgregarACarritoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarACarritoMouseClicked
+        // TODO add your handling code here:
+        listarTablaDetalle();
+
+        cargarTablaDetalle();
+    }//GEN-LAST:event_btnAgregarACarritoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1113,6 +1126,7 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JPanel PanelConsultas;
     private javax.swing.JPanel PanelProducto;
     private javax.swing.JPanel PanelProveedores;
+    private javax.swing.JButton btnAgregarACarrito;
     private javax.swing.JButton btnComprar;
     private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBEliminarprove;
@@ -1207,13 +1221,24 @@ public class menu extends javax.swing.JFrame {
         }
     }
 
+    public void listarTablaDetalle() {
+        modelo2.addRow(new Object[]{
+            jcProveedor1.getSelectedItem(),
+            jcProducto.getSelectedItem(),
+            jTCantidad.getText(),
+            jTPrecioCompra.getText(),
+            jlFecha.getText()
+        });
+
+    }
+
     public void cargarTablaDetalle() {
 
         DetalleCompraData deta = new DetalleCompraData();
         int iddeta = deta.obtenerIdDetalle();
         for (DetalleCompra d : deta.obtenerDetalleCompraFull(iddeta)) {
 
-            modelo1.addRow(new Object[]{
+            modelo2.addRow(new Object[]{
                 d.getCompra().getIdCompra(),
                 d.getCompra().getFecha(),
                 d.getProducto().getNombreProducto(),
@@ -1233,6 +1258,7 @@ public class menu extends javax.swing.JFrame {
         modelo2.addColumn("Cantidad");
         modelo2.addColumn("Precio de Costo");
         modelo2.addColumn("Proveedor");
+        modelo2.addColumn("Precio Total");
 
         jtDetalleCompra.setModel(modelo2);
 
