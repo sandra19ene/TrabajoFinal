@@ -197,7 +197,31 @@ public class ProductoData {
     }
 
     return productos;
-}
+    }
+    
+    public Producto buscarIDProducto(String nombre) {
+    String sql = "SELECT  idProducto FROM producto WHERE nombreProducto=? ";
+        Producto producto = new Producto();
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        
+        ps.setString(1, nombre);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            
+            producto.setIdProducto(rs.getInt("idProducto"));
+
+        } else {
+            JOptionPane.showMessageDialog(null, "El producto no existe");
+        }
+        ps.close();
+
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'producto'/ " + ex.getMessage());
+    }
+    return producto;
+    }
     
 //     public void consultaProveedor (JComboBox proveedor) {
 //    String sql = "SELECT nombre FROM proveedor ";   

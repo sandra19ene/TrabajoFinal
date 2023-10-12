@@ -16,7 +16,9 @@ import entidades.Proveedor;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -43,7 +45,10 @@ public class menu extends javax.swing.JFrame {
                 return false;
             } else if (column == 5) {
                 return false;
-
+            } else if (column == 6) {
+                return false;
+            } else if (column == 7) {
+                return false;
             } else {
                 return true;
             }
@@ -93,12 +98,12 @@ public class menu extends javax.swing.JFrame {
 
         cargarCabezera();
         cargarTabla();
-
+        
         cargarCabezeraProve();
         cargarTablaProve();
         cargarComboProve();
         cargarComboProdu();
-
+//        cargarCabeceraListarDetalle();
         jlFecha.setText(fechaActual());
 
     }
@@ -175,6 +180,8 @@ public class menu extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         btnAgregarACarrito = new javax.swing.JButton();
+        jLabel27 = new javax.swing.JLabel();
+        JLTotalAPagar = new javax.swing.JLabel();
         PanelConsultas = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -188,7 +195,6 @@ public class menu extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("ELECTRONICS");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 320, -1));
@@ -312,16 +318,19 @@ public class menu extends javax.swing.JFrame {
         menuPrincipal.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 320, 520));
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
+            }
+        });
 
         PanelProducto.setBackground(new java.awt.Color(255, 255, 255));
         PanelProducto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("________________________________________________________________");
         jLabel18.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         PanelProducto.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 460, 30));
 
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("_________________________________");
         jLabel9.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         PanelProducto.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 230, 30));
@@ -341,7 +350,6 @@ public class menu extends javax.swing.JFrame {
         jLabel16.setText("PRECIO:");
         PanelProducto.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, -1, -1));
 
-        jtDescripcion.setBackground(new java.awt.Color(255, 255, 255));
         jtDescripcion.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jtDescripcion.setBorder(null);
         jtDescripcion.addActionListener(new java.awt.event.ActionListener() {
@@ -351,7 +359,6 @@ public class menu extends javax.swing.JFrame {
         });
         PanelProducto.add(jtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 450, -1));
 
-        jtNombreProducto.setBackground(new java.awt.Color(255, 255, 255));
         jtNombreProducto.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jtNombreProducto.setBorder(null);
         jtNombreProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -361,12 +368,10 @@ public class menu extends javax.swing.JFrame {
         });
         PanelProducto.add(jtNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 200, -1));
 
-        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setText("__________");
         jLabel19.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         PanelProducto.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 70, 30));
 
-        jtPrecio.setBackground(new java.awt.Color(255, 255, 255));
         jtPrecio.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jtPrecio.setBorder(null);
         jtPrecio.addActionListener(new java.awt.event.ActionListener() {
@@ -376,7 +381,6 @@ public class menu extends javax.swing.JFrame {
         });
         PanelProducto.add(jtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 70, -1));
 
-        jtablaProducto.setBackground(new java.awt.Color(255, 255, 255));
         jtablaProducto.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jtablaProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -455,12 +459,10 @@ public class menu extends javax.swing.JFrame {
         PanelProveedores.setBackground(new java.awt.Color(255, 255, 255));
         PanelProveedores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("___________________________________________");
         jLabel13.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         PanelProveedores.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 310, 40));
 
-        jtRazonSocial.setBackground(new java.awt.Color(255, 255, 255));
         jtRazonSocial.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jtRazonSocial.setBorder(null);
         jtRazonSocial.addActionListener(new java.awt.event.ActionListener() {
@@ -475,12 +477,10 @@ public class menu extends javax.swing.JFrame {
         jLabel17.setText("RAZON SOCIAL:");
         PanelProveedores.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 110, -1));
 
-        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
         jLabel21.setText("_______________________________________________");
         jLabel21.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         PanelProveedores.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 340, 40));
 
-        jtDomicilioProveedor.setBackground(new java.awt.Color(255, 255, 255));
         jtDomicilioProveedor.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jtDomicilioProveedor.setBorder(null);
         jtDomicilioProveedor.addActionListener(new java.awt.event.ActionListener() {
@@ -495,12 +495,10 @@ public class menu extends javax.swing.JFrame {
         jLabel22.setText("DOMICILIO:");
         PanelProveedores.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 80, -1));
 
-        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
         jLabel23.setText("___________________");
         jLabel23.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         PanelProveedores.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 140, 40));
 
-        jtTelefonoProveedor.setBackground(new java.awt.Color(255, 255, 255));
         jtTelefonoProveedor.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jtTelefonoProveedor.setBorder(null);
         jtTelefonoProveedor.addActionListener(new java.awt.event.ActionListener() {
@@ -517,11 +515,6 @@ public class menu extends javax.swing.JFrame {
 
         jBGuardarProveedor.setBackground(new java.awt.Color(204, 204, 204));
         jBGuardarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono32.png"))); // NOI18N
-        jBGuardarProveedor.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jBGuardarProveedorMouseEntered(evt);
-            }
-        });
         jBGuardarProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBGuardarProveedorActionPerformed(evt);
@@ -529,7 +522,6 @@ public class menu extends javax.swing.JFrame {
         });
         PanelProveedores.add(jBGuardarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 80, 60));
 
-        jtablaProveedor.setBackground(new java.awt.Color(255, 255, 255));
         jtablaProveedor.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jtablaProveedor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -599,16 +591,14 @@ public class menu extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jtDetalleCompra);
 
-        PanelCompra.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 830, 140));
+        PanelCompra.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 830, 140));
 
         jlFecha.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jlFecha.setForeground(new java.awt.Color(0, 0, 0));
         jlFecha.setAlignmentY(0.0F);
         jlFecha.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(102, 102, 102)));
         PanelCompra.add(jlFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 60, 170, 30));
 
         jLabel10.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("  FECHA DE COMPRA");
         PanelCompra.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, 170, -1));
 
@@ -626,12 +616,10 @@ public class menu extends javax.swing.JFrame {
         PanelCompra.add(jcProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 320, 30));
 
         jLabel11.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("PRODUCTO:");
         PanelCompra.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 100, 30));
 
         jLabel12.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("PROVEEDOR:");
         PanelCompra.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 27, 100, 30));
 
@@ -664,12 +652,10 @@ public class menu extends javax.swing.JFrame {
         PanelCompra.add(jTPrecioCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 80, 30));
 
         jLabel20.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setText("CANTIDAD:");
         PanelCompra.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
         jLabel26.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(0, 0, 0));
         jLabel26.setText("PRECIO COMPRA:");
         PanelCompra.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, -1, 20));
 
@@ -679,7 +665,19 @@ public class menu extends javax.swing.JFrame {
                 btnAgregarACarritoMouseClicked(evt);
             }
         });
+        btnAgregarACarrito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarACarritoActionPerformed(evt);
+            }
+        });
         PanelCompra.add(btnAgregarACarrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, 170, -1));
+
+        jLabel27.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        jLabel27.setText("TOTAL A PAGAR:");
+        PanelCompra.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 120, 30));
+
+        JLTotalAPagar.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
+        PanelCompra.add(JLTotalAPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 110, 30));
 
         jTabbedPane1.addTab("Compra de Productos", PanelCompra);
 
@@ -928,10 +926,6 @@ public class menu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jBGuardarProveedorActionPerformed
 
-    private void jBGuardarProveedorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBGuardarProveedorMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBGuardarProveedorMouseEntered
-
     private void jtTelefonoProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtTelefonoProveedorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtTelefonoProveedorActionPerformed
@@ -1045,33 +1039,7 @@ public class menu extends javax.swing.JFrame {
 
     private void btnComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprarActionPerformed
 
-        CompraData com = new CompraData();
-        ProveedorData prove = new ProveedorData();
-        DetalleCompraData dCompra = new DetalleCompraData();
-
-        String r = (String) jcProveedor1.getSelectedItem();
-
-        Proveedor m = prove.buscarProveedor(r);
-
-        int t = m.getIdProveedor();
-
-        //com.realizarCompra(t, LocalDate.now());
-        int idComp = com.obtenerIdCompra();
-//---------------------------------------------------------------------------        
-        ProductoData prod = new ProductoData();
-
-        String p = (String) jcProducto.getSelectedItem();
-
-        Producto produc = prod.buscarProducto(p);
-
-        int idProd = produc.getIdProducto();
-
-        //DetalleCompraData de = new DetalleCompraData();
-        dCompra.generarDetalleCompra(Integer.parseInt(jTCantidad.getText()), Double.parseDouble(jTPrecioCompra.getText()), idComp, idProd);
-        cargarCabezeraDetalle();
-        cargarTablaDetalle();
-
-
+        cargarCarrito();
     }//GEN-LAST:event_btnComprarActionPerformed
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
@@ -1080,11 +1048,18 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void btnAgregarACarritoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarACarritoMouseClicked
-        // TODO add your handling code here:
+       
         listarTablaDetalle();
-
-        cargarTablaDetalle();
+        
     }//GEN-LAST:event_btnAgregarACarritoMouseClicked
+
+    private void btnAgregarACarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarACarritoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarACarritoActionPerformed
+
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        cargarCabeceraListarDetalle();
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1122,6 +1097,7 @@ public class menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel JLTotalAPagar;
     private javax.swing.JPanel PanelCompra;
     private javax.swing.JPanel PanelConsultas;
     private javax.swing.JPanel PanelProducto;
@@ -1154,6 +1130,7 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1222,48 +1199,107 @@ public class menu extends javax.swing.JFrame {
     }
 
     public void listarTablaDetalle() {
+        ProveedorData prove=new ProveedorData();
+        ProductoData produ=new ProductoData();
+        double subtotal=Double.parseDouble(jTPrecioCompra.getText())*Integer.parseInt(jTCantidad.getText());
+        
         modelo2.addRow(new Object[]{
+            prove.buscarIDProveedor((String)jcProveedor1.getSelectedItem()).getIdProveedor(),
             jcProveedor1.getSelectedItem(),
+            produ.buscarIDProducto((String)jcProducto.getSelectedItem()).getIdProducto(),
             jcProducto.getSelectedItem(),
             jTCantidad.getText(),
             jTPrecioCompra.getText(),
+            subtotal,
             jlFecha.getText()
         });
-
+        
+        double total=0;
+        int filaActual=0;
+        for (int i = 0; i < jtDetalleCompra.getRowCount(); i++) {
+            
+            Object subtt = jtDetalleCompra.getValueAt(filaActual, 6);
+            total = total + Double.parseDouble(subtt.toString());
+            filaActual ++;
+            JLTotalAPagar.setText(String.valueOf(total));
+        }
     }
 
     public void cargarTablaDetalle() {
 
         DetalleCompraData deta = new DetalleCompraData();
         int iddeta = deta.obtenerIdDetalle();
+         ProductoData produ=new ProductoData();
+        double subtotal=Double.parseDouble(jTPrecioCompra.getText())*Integer.parseInt(jTCantidad.getText());
+        
         for (DetalleCompra d : deta.obtenerDetalleCompraFull(iddeta)) {
-
             modelo2.addRow(new Object[]{
                 d.getCompra().getIdCompra(),
-                d.getCompra().getFecha(),
+                produ.buscarIDProducto((String)jcProducto.getSelectedItem()).getIdProducto(),
+                d.getCompra().getProveedor().getRazonSocial(),
                 d.getProducto().getNombreProducto(),
                 d.getCantidad(),
                 d.getPrecioCosto(),
-                d.getCompra().getProveedor().getRazonSocial()});
-
+                subtotal,
+                d.getCompra().getFecha()});
         }
 
     }
 
     private void cargarCabezeraDetalle() {
 
-        modelo2.addColumn("ID Compra");
-        modelo2.addColumn("Fecha");
+        modelo2.addColumn("NRO FACTURA");
+        modelo2.addColumn("Proveedor");
+        modelo2.addColumn("ID Producto");
         modelo2.addColumn("Producto");
         modelo2.addColumn("Cantidad");
         modelo2.addColumn("Precio de Costo");
-        modelo2.addColumn("Proveedor");
         modelo2.addColumn("Precio Total");
+        modelo2.addColumn("Fecha");
 
         jtDetalleCompra.setModel(modelo2);
 
     }
+    
+    private void cargarCabeceraListarDetalle() {
 
+        modelo2.addColumn("ID Proveedor");
+        modelo2.addColumn("Proveedor");
+        modelo2.addColumn("ID Producto");
+        modelo2.addColumn("Producto");
+        modelo2.addColumn("Cantidad");
+        modelo2.addColumn("Precio Unitario");
+        modelo2.addColumn("SubTotal");
+        modelo2.addColumn("Fecha");
+
+        jtDetalleCompra.setModel(modelo2);
+
+    }
+    
+    public void cargarCarrito(){//Va generado el DetalleCompra con lo de la tabla
+        CompraData com = new CompraData();
+        ProveedorData prove = new ProveedorData();
+        DetalleCompraData dCompra = new DetalleCompraData();
+
+        String r = (String) jcProveedor1.getSelectedItem();
+        Proveedor m = prove.buscarProveedor(r);
+        int t = m.getIdProveedor();
+        
+        com.realizarCompra(t, LocalDate.now());
+        int idComp = com.obtenerIdCompra();
+        
+        int totalFilas = jtDetalleCompra.getRowCount();
+        int filaActual = 0;
+        
+        while(filaActual<totalFilas){
+        Object idProd= jtDetalleCompra.getValueAt(filaActual, 2);
+        Object cantidad = jtDetalleCompra.getValueAt(filaActual, 4);
+        Object precio = jtDetalleCompra.getValueAt(filaActual, 5);
+
+        dCompra.generarDetalleCompra(Integer.parseInt(cantidad.toString()), Double.parseDouble(precio.toString()), idComp, Integer.parseInt(idProd.toString()));
+        filaActual++;
+        }
+    }
     private void cargarCabezeraProve() {
 
         modelo1.addColumn("ID");
