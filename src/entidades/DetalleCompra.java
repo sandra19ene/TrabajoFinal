@@ -13,23 +13,26 @@ public class DetalleCompra {
     int idDetalle;
     int cantidad;
     double precioCosto;
+    double subTotal;
     Compra compra;
     Producto producto;
 
     public DetalleCompra() {
     }
 
-    public DetalleCompra(int cantidad, double precioCosto, Compra compra, Producto producto) {
+    public DetalleCompra(int cantidad, double precioCosto, double subTotal, Compra compra, Producto producto) {
         this.cantidad = cantidad;
         this.precioCosto = precioCosto;
+        this.subTotal = subTotal;
         this.compra = compra;
         this.producto = producto;
     }
 
-    public DetalleCompra(int idDetalle, int cantidad, double precioCosto, Compra compra, Producto producto) {
+    public DetalleCompra(int idDetalle, int cantidad, double precioCosto, double subTotal, Compra compra, Producto producto) {
         this.idDetalle = idDetalle;
         this.cantidad = cantidad;
         this.precioCosto = precioCosto;
+        this.subTotal = subTotal;
         this.compra = compra;
         this.producto = producto;
     }
@@ -58,6 +61,14 @@ public class DetalleCompra {
         this.precioCosto = precioCosto;
     }
 
+    public double getSubTotal() {
+        return subTotal;
+    }
+
+    public void setSubTotal(double subTotal) {
+        this.subTotal = subTotal;
+    }
+
     public Compra getCompra() {
         return compra;
     }
@@ -76,11 +87,9 @@ public class DetalleCompra {
 
     @Override
     public String toString() {
-        return "cantidad=" + cantidad + ", precioCosto=" + precioCosto + ", compra=" + compra + ", producto=" + producto;
+        return "DetalleCompra{" + "idDetalle=" + idDetalle + ", cantidad=" + cantidad + ", precioCosto=" + precioCosto + ", subTotal=" + subTotal + ", compra=" + compra + ", producto=" + producto + '}';
     }
 
-    
-    
-    
+   
     
 }

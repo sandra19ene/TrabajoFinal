@@ -23,15 +23,16 @@ public class DetalleCompraData {
         con = Conexion.getConexion();
     }
 
-    public void generarDetalleCompra(int cantidad, double precio, int idCompra, int idProducto) {
-        String sql = "INSERT INTO detallecompra (cantidad, precioCosto, idCompra, idProducto) VALUES (?,?,?,?)";
+    public void generarDetalleCompra(int cantidad, double precio,double subTotal, int idCompra, int idProducto) {
+        String sql = "INSERT INTO detallecompra (cantidad, precioCosto,subTotal,idCompra, idProducto) VALUES (?,?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             int idDetalle = 0;
             ps.setInt(1, cantidad);
             ps.setDouble(2, precio);
-            ps.setInt(3, idCompra);
-            ps.setInt(4, idProducto);
+            ps.setDouble(3, subTotal);           
+            ps.setInt(4, idCompra);
+            ps.setInt(5, idProducto);
 
             ps.executeUpdate();
 
@@ -259,7 +260,7 @@ public class DetalleCompraData {
             detalleCompra.setIdDetalle(rs.getInt("idDetalle"));
             detalleCompra.setCantidad(rs.getInt("cantidad"));
             detalleCompra.setPrecioCosto(rs.getDouble("precioCosto"));
-//            detalleCompra.setSubTotal(rs.getDouble("subTotal"));
+            detalleCompra.setSubTotal(rs.getDouble("subTotal"));
 
             proveedor.setRazonSocial(rs.getString("razonSocial"));
             compra.setProveedor(proveedor);

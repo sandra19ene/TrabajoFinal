@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
+
 public class CompraData {
 
     private Connection con = null;
@@ -35,7 +36,7 @@ public class CompraData {
             if (rs.next()) {
                 comp.setIdCompra(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Compra realizada con éxito.");
-
+               
             }
             ps.close();
 
@@ -82,7 +83,8 @@ public class CompraData {
     }
     
     
-    
-    
+
+
+
     
 }

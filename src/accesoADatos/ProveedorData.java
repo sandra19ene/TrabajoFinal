@@ -29,7 +29,7 @@ public class ProveedorData {
     }
     
     public void guardarProveedor(Proveedor proveedor) {
-        String sql = "INSERT INTO proveedor(razonSocial, domicilio, telefono) VALUES (?,?,?)";
+        String sql = "INSERT INTO proveedor(razonSocial, domicilio, telefono,estado) VALUES (?,?,?,true)";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -117,7 +117,7 @@ public class ProveedorData {
 }
     
     public List<Proveedor> listaProveedores() {
-        String sql = "SELECT razonSocial FROM proveedor ";
+        String sql = "SELECT * FROM proveedor ";
         List<Proveedor> prove = new ArrayList<>();
         
         try {
@@ -125,9 +125,13 @@ public class ProveedorData {
             ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {
+                
                 Proveedor p = new Proveedor();
-               
+                p.setIdProveedor(rs.getInt("idProveedor"));
                 p.setRazonSocial(rs.getString("razonSocial"));
+                p.setDomicilio(rs.getString("domicilio"));
+                p.setTelefono(rs.getString("telefono"));
+                
                
                 
                 prove.add(p);
@@ -196,4 +200,30 @@ public Proveedor buscarIDProveedor(String razonSocial) {
     return proveedor;
     }
     
+
+   public Proveedor getDatos(int idCompra){
+    String sql = "SELECT proveedor.*, compra.* " +
+                 "FROM proveedor " +
+                 "INNER JOIN compra ON proveedor.idProveedor = compra.idProveedor " +
+                 "WHERE compra.idCompra = ?";
+    
+    Proveedor pr = new Proveedor();
+    try{
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, idCompra);
+        ResultSet rs = ps.executeQuery();
+        if(rs.next()) {
+            pr.setRazonSocial(rs.getString("razonSocial"));
+            pr.setDomicilio(rs.getString("domicilio"));
+            pr.setTelefono(rs.getString("telefono"));
+            // Aquí puedes obtener información relacionada a la compra si es necesario
+        }
+    } catch (SQLException e){
+        JOptionPane.showMessageDialog(null, e.toString());
+    }
+    return pr;
+}
+
+   
+
 }

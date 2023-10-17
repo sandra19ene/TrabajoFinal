@@ -9,25 +9,29 @@ public class Producto {
     double precioActual;
     int stock;
     String categoria;
+    boolean estado;
+    
 
     public Producto() {
     }
 
-    public Producto(String nombreProducto, String descripcion, double precioActual, int stock, String categoria) {
+    public Producto(String nombreProducto, String descripcion, double precioActual, int stock, String categoria, boolean estado) {
         this.nombreProducto = nombreProducto;
         this.descripcion = descripcion;
         this.precioActual = precioActual;
         this.stock = stock;
         this.categoria = categoria;
+        this.estado = estado;
     }
 
-    public Producto(int idProducto, String nombreProducto, String descripcion, double precioActual, int stock, String categoria) {
+    public Producto(int idProducto, String nombreProducto, String descripcion, double precioActual, int stock, String categoria, boolean estado) {
         this.idProducto = idProducto;
         this.nombreProducto = nombreProducto;
         this.descripcion = descripcion;
         this.precioActual = precioActual;
         this.stock = stock;
         this.categoria = categoria;
+        this.estado = estado;
     }
 
     public int getIdProducto() {
@@ -78,11 +82,26 @@ public class Producto {
         this.categoria = categoria;
     }
 
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     @Override
     public String toString() {
         return "Producto{" + "idProducto=" + idProducto + ", nombreProducto=" + nombreProducto + ", descripcion=" + descripcion + ", precioActual=" + precioActual + ", stock=" + stock + ", categoria=" + categoria + '}';
     }
-    
+
+    public boolean isEstado(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+
+   
     
     
 }
