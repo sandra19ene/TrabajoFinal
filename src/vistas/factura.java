@@ -43,9 +43,12 @@ public class factura extends javax.swing.JFrame {
         cargarTablaDetalleFac(idCompra);
         calcularTotal();
         pro = prove.getDatos(idCompra);
-        razonSocialFac.setText(pro.getRazonSocial());
-        DomicilioFac.setText(pro.getDomicilio());
-        TelefonoFac.setText(pro.getTelefono());
+        razonSocialFac.setText("PROVEMAX S.A");
+        membreteProve.setText(pro.getRazonSocial());
+        membretedomi.setText(pro.getDomicilio());
+        membretetel.setText(pro.getTelefono());
+        DomicilioFac.setText("Av.Group 45 Caba");
+        TelefonoFac.setText("4545-4545");
         generarNroCompra();
 
     }
@@ -60,9 +63,7 @@ public class factura extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jtTotal = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jlfechafa = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
@@ -77,7 +78,9 @@ public class factura extends javax.swing.JFrame {
         jtfactura = new javax.swing.JTable();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        membreteProve = new javax.swing.JLabel();
+        membretedomi = new javax.swing.JLabel();
+        membretetel = new javax.swing.JLabel();
         jbImprimir = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -117,20 +120,12 @@ public class factura extends javax.swing.JFrame {
         jLabel2.setText("N° de Compra:");
         facturaView.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 120, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LOGOPVM.png"))); // NOI18N
-        facturaView.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 220, 160));
-
         jlfechafa.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jlfechafa.setForeground(new java.awt.Color(0, 0, 0));
         jlfechafa.setAlignmentX(1.0F);
         jlfechafa.setAlignmentY(1.0F);
         jlfechafa.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         facturaView.add(jlfechafa, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, 140, 40));
-
-        jLabel4.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setText("Av.Group 45 Caba.  Tel. 4545-4545");
-        facturaView.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 270, 20));
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator1.setAutoscrolls(true);
@@ -217,10 +212,18 @@ public class factura extends javax.swing.JFrame {
         jLabel8.setText("Fecha de Compra:");
         facturaView.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 150, 40));
 
-        jLabel9.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel9.setText("PROVEMAX S.A");
-        facturaView.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 150, 20));
+        membreteProve.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        membreteProve.setForeground(new java.awt.Color(0, 0, 0));
+        membreteProve.setText("LG ELECTRONICS S.R.L");
+        facturaView.add(membreteProve, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 260, 60));
+
+        membretedomi.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        membretedomi.setForeground(new java.awt.Color(0, 0, 0));
+        facturaView.add(membretedomi, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 220, 20));
+
+        membretetel.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        membretetel.setForeground(new java.awt.Color(51, 51, 51));
+        facturaView.add(membretetel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 220, 20));
 
         getContentPane().add(facturaView, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 650));
 
@@ -337,13 +340,10 @@ public class factura extends javax.swing.JFrame {
     private javax.swing.JPanel facturaView;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
@@ -358,6 +358,9 @@ public class factura extends javax.swing.JFrame {
     private javax.swing.JLabel jlfechafa;
     private javax.swing.JLabel jtTotal;
     private javax.swing.JTable jtfactura;
+    private javax.swing.JLabel membreteProve;
+    private javax.swing.JLabel membretedomi;
+    private javax.swing.JLabel membretetel;
     private javax.swing.JTextField razonSocialFac;
     // End of variables declaration//GEN-END:variables
 
