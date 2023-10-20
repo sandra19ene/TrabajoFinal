@@ -41,7 +41,7 @@ public class CompraData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'compra'/" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'compra '/" + ex.getMessage());
         }
     }
 
@@ -60,7 +60,7 @@ public class CompraData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla compra " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla compra  " + ex.getMessage());
 
         }
     
@@ -77,7 +77,7 @@ public class CompraData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla 'compra'/ "+ ex.getMessage());
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla 'compra '/ "+ ex.getMessage());
         }
         return ultId;
     }
