@@ -284,11 +284,11 @@ public class consultaCompra extends javax.swing.JFrame {
         DetalleCompraData deta = new DetalleCompraData();
         ProveedorData prove = new ProveedorData();
         
-        String r = (String) jcCompXProve.getSelectedItem();
-        Proveedor m = prove.buscarProveedor(r);
-        int t = m.getIdProveedor();
+        String item = (String) jcCompXProve.getSelectedItem();
+        Proveedor proveedor = prove.buscarProveedor(item);
+        int idProveedor = proveedor.getIdProveedor();
 
-        for (DetalleCompra d : deta.comprasPorProveedor(t)) {
+        for (DetalleCompra d : deta.comprasPorProveedor(idProveedor)) {
             Double subtotal = d.getPrecioCosto()*d.getCantidad();
             modelo3.addRow(new Object[]{
                 d.getCompra().getIdCompra(),
@@ -297,7 +297,7 @@ public class consultaCompra extends javax.swing.JFrame {
                 d.getProducto().getNombreProducto(),
                 d.getCantidad(),
                 d.getPrecioCosto(),
-                subtotal.longValue(),
+                subtotal,
                 d.getCompra().getFecha()});
         }
         }

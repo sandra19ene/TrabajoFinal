@@ -194,48 +194,6 @@ public class DetalleCompraData {
         return listaProductos;
     }
 
-    public List<DetalleCompra> productoMasVendidoPorFechas(LocalDate fecha1, LocalDate fecha2) {
-        ArrayList<DetalleCompra> listaProductos = new ArrayList<DetalleCompra>();
-
-        try {
-            String sql = "SELECT detallecompra.idProducto, producto.nombreProducto, COUNT(*) AS total "
-                    + "FROM detallecompra "
-                    + "JOIN producto ON producto.idProducto=detallecompra.idProducto "
-                    + "JOIN compra ON compra.idCompra=detallecompra.idCompra "
-                    + "WHERE compra.fecha BETWEEN ? AND ? "
-                    + "GROUP BY producto.nombreProducto "
-                    + "ORDER BY total DESC "
-                    + "LIMIT 1";
-
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setDate(1, Date.valueOf(fecha1));
-            ps.setDate(2, Date.valueOf(fecha2));
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                DetalleCompra detalleCompra = new DetalleCompra();
-
-                Producto producto = new Producto();
-
-                producto.setIdProducto(rs.getInt("idProducto"));
-                detalleCompra.setProducto(producto);
-
-                producto.setNombreProducto(rs.getString("nombreProducto"));
-                detalleCompra.setProducto(producto);
-
-                int total = rs.getInt("total");
-
-                listaProductos.add(detalleCompra);
-            }
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erros al acceder a la tabla 'detalleproducto'/ " + ex.getMessage());
-        }
-        return listaProductos;
-        
-
-    }
-
    public List<DetalleCompra> obtenerDetalleCompraFull(int idCompra) {
     ArrayList<DetalleCompra> listaCompra = new ArrayList<DetalleCompra>();
     String sql = "SELECT detallecompra.idDetalle, detallecompra.cantidad, detallecompra.precioCosto, detallecompra.subTotal, " +
@@ -298,5 +256,78 @@ public class DetalleCompraData {
         return ultId;
     }
    
-   
+    public List<DetalleCompra> productoMasCompradoEntreFechas(LocalDate fecha1, LocalDate fecha2) {
+        ArrayList<DetalleCompra> listaProductos = new ArrayList<DetalleCompra>();
+
+        try {
+            String sql = "SELECT producto.nombreProducto, SUM(detallecompra.cantidad) AS cantidadUnidades "
+                    + "FROM detallecompra "
+                    + "JOIN producto ON producto.idProducto=detallecompra.idProducto "
+                    + "JOIN compra ON compra.idCompra=detallecompra.idCompra "
+                    + "WHERE compra.fecha BETWEEN ? AND ? "
+                    + "GROUP BY producto.nombreProducto "
+                    + "ORDER BY cantidadUnidades DESC "
+                    + "LIMIT 1";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDate(1, Date.valueOf(fecha1));
+            ps.setDate(2, Date.valueOf(fecha2));
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                DetalleCompra detalleCompra = new DetalleCompra();
+
+                Producto producto = new Producto();
+
+                producto.setNombreProducto(rs.getString("nombreProducto"));
+                detalleCompra.setProducto(producto);
+                
+                int total = rs.getInt("cantidadUnidades");
+                detalleCompra.setCantidad(total);
+                
+                listaProductos.add(detalleCompra);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'detalleproducto'/ " + ex.getMessage());
+        }
+        return listaProductos;
+    }
+    
+    public List<DetalleCompra> productoPorProveedor(int idProveedor) {
+        ArrayList<DetalleCompra> listaProductos = new ArrayList<DetalleCompra>();
+
+        try {
+            String sql = "SELECT producto.nombreProducto, SUM(detallecompra.cantidad) AS cantidadUnidades "
+                    + "FROM detallecompra "
+                    + "JOIN producto ON producto.idProducto=detallecompra.idProducto "
+                    + "JOIN compra ON compra.idCompra=detallecompra.idCompra "
+                    + "JOIN proveedor ON proveedor.idProveedor=compra.idProveedor "
+                    + "WHERE proveedor.idProveedor = ? "
+                    + "GROUP BY producto.nombreProducto "
+                    + "ORDER BY cantidadUnidades DESC";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idProveedor);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                DetalleCompra detalleCompra = new DetalleCompra();
+
+                Producto producto = new Producto();
+
+                producto.setNombreProducto(rs.getString("nombreProducto"));
+                detalleCompra.setProducto(producto);
+                
+                int total = rs.getInt("cantidadUnidades");
+                detalleCompra.setCantidad(total);
+                
+                listaProductos.add(detalleCompra);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'detalleproducto'/ " + ex.getMessage());
+        }
+        return listaProductos;
+    }
 }
