@@ -180,9 +180,9 @@ public class menu extends javax.swing.JFrame {
         jLabel30 = new javax.swing.JLabel();
         botonConsultaPro = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
-        imaCompra = new javax.swing.JLabel();
-        imaProductos = new javax.swing.JLabel();
-        fondoConsulta = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        fondoconsul = new javax.swing.JLabel();
         PanelCompra = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jtDetalleCompra = new javax.swing.JTable();
@@ -203,6 +203,8 @@ public class menu extends javax.swing.JFrame {
         jbImprimir = new javax.swing.JButton();
         jbBorrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        imaProductos = new javax.swing.JLabel();
+        imaCompra = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -691,14 +693,15 @@ public class menu extends javax.swing.JFrame {
 
         PanelConsultas.add(botonConsultaPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 260, 70));
 
-        imaCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagencompras.png"))); // NOI18N
-        PanelConsultas.add(imaCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 570, 480));
+        jLabel21.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel21.setText("ELECTRONICS");
+        PanelConsultas.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 140, -1));
 
-        imaProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagenProductos.png"))); // NOI18N
-        PanelConsultas.add(imaProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 570, 480));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/a598455c-c401-45b8-b68e-566ee65d6b65.png"))); // NOI18N
+        PanelConsultas.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 270, 200));
 
-        fondoConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wavy-blue-background-free-vector.jpg"))); // NOI18N
-        PanelConsultas.add(fondoConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 480));
+        fondoconsul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wavy-blue-background-free-vector.jpg"))); // NOI18N
+        PanelConsultas.add(fondoconsul, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 490));
 
         jTabbedPane1.addTab("Consultas", PanelConsultas);
 
@@ -854,6 +857,12 @@ public class menu extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wavy-blue-background-free-vector.jpg"))); // NOI18N
         menuPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1260, 690));
+
+        imaProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagenProductos.png"))); // NOI18N
+        menuPrincipal.add(imaProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 570, 480));
+
+        imaCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagencompras.png"))); // NOI18N
+        menuPrincipal.add(imaCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 570, 490));
 
         getContentPane().add(menuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1260, 690));
 
@@ -1288,7 +1297,7 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JPanel botonConsultaPro;
     private javax.swing.JButton btnAgregarACarrito;
     private javax.swing.JButton btnComprar;
-    private javax.swing.JLabel fondoConsulta;
+    private javax.swing.JLabel fondoconsul;
     private javax.swing.JLabel imaCompra;
     private javax.swing.JLabel imaProductos;
     private javax.swing.JButton jBEliminar;
@@ -1311,6 +1320,7 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -1325,6 +1335,7 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

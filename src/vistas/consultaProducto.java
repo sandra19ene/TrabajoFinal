@@ -71,41 +71,47 @@ public class consultaProducto extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtConsultaProduc = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         jDateFecha2 = new com.toedter.calendar.JDateChooser();
         jLabel5 = new javax.swing.JLabel();
         jDateFecha1 = new com.toedter.calendar.JDateChooser();
         jcProve = new javax.swing.JComboBox<>();
         jbStockBajo = new javax.swing.JButton();
         jbMasComprado = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(690, 530));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(690, 530));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jBsalir.setText("salir");
+        jBsalir.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jBsalir.setText("Salir");
         jBsalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBsalirMouseClicked(evt);
             }
         });
-        jPanel1.add(jBsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 160, -1, -1));
+        jPanel1.add(jBsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 180, 100, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Más comprado entre fechas:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 80, 180, 20));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 190, 20));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Por Proveedor:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 120, 100, 20));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 100, 20));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Con stock bajo:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 100, 20));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 100, 20));
 
         jtConsultaProduc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -120,22 +126,25 @@ public class consultaProducto extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jtConsultaProduc);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 690, 320));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 690, 300));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto Black", 1, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CONSULTA DE PRODUCTOS");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, 40));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 10, 680, 40));
 
-        jPanel2.setBackground(new java.awt.Color(6, 60, 140));
-        jPanel2.setForeground(new java.awt.Color(6, 60, 140));
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 60));
+        jDateFecha2.setForeground(new java.awt.Color(51, 51, 51));
+        jDateFecha2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jPanel1.add(jDateFecha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 140, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("y");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 80, 10, -1));
+
+        jDateFecha1.setForeground(new java.awt.Color(0, 0, 0));
+        jDateFecha1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jPanel1.add(jDateFecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 140, -1));
 
         jcProve.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Proveedor" }));
@@ -144,25 +153,30 @@ public class consultaProducto extends javax.swing.JFrame {
                 jcProveItemStateChanged(evt);
             }
         });
-        jPanel1.add(jcProve, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 160, -1));
+        jPanel1.add(jcProve, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 160, -1));
 
+        jbStockBajo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jbStockBajo.setText("Listar");
         jbStockBajo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jbStockBajoMouseClicked(evt);
             }
         });
-        jPanel1.add(jbStockBajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, -1, -1));
+        jPanel1.add(jbStockBajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 100, -1));
 
+        jbMasComprado.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jbMasComprado.setText("Listar");
         jbMasComprado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jbMasCompradoMouseClicked(evt);
             }
         });
-        jPanel1.add(jbMasComprado, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 80, -1, -1));
+        jPanel1.add(jbMasComprado, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 80, 100, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 530));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wavy-blue-background-free-vector.jpg"))); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 530));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -231,8 +245,8 @@ public class consultaProducto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbMasComprado;
     private javax.swing.JButton jbStockBajo;
