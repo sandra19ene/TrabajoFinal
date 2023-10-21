@@ -185,9 +185,10 @@ public class menu extends javax.swing.JFrame {
         jLabel30 = new javax.swing.JLabel();
         botonConsultaPro = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        imaProductos = new javax.swing.JLabel();
+        imaCompra = new javax.swing.JLabel();
         fondoconsul = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         PanelCompra = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jtDetalleCompra = new javax.swing.JTable();
@@ -208,8 +209,6 @@ public class menu extends javax.swing.JFrame {
         jbImprimir = new javax.swing.JButton();
         jbBorrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        imaProductos = new javax.swing.JLabel();
-        imaCompra = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -390,13 +389,10 @@ public class menu extends javax.swing.JFrame {
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("__________________________________________________");
         PanelProducto.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 250, 20));
 
-        jtNombreProducto.setBackground(new java.awt.Color(255, 255, 255));
         jtNombreProducto.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jtNombreProducto.setForeground(new java.awt.Color(0, 0, 0));
         jtNombreProducto.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jtNombreProducto.setBorder(null);
         jtNombreProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -407,13 +403,10 @@ public class menu extends javax.swing.JFrame {
         PanelProducto.add(jtNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 220, -1));
 
         jLabel19.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setText("____________________");
         PanelProducto.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 35, 120, 30));
 
-        jtPrecio.setBackground(new java.awt.Color(255, 255, 255));
         jtPrecio.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jtPrecio.setForeground(new java.awt.Color(0, 0, 0));
         jtPrecio.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jtPrecio.setBorder(null);
         jtPrecio.addActionListener(new java.awt.event.ActionListener() {
@@ -501,13 +494,10 @@ public class menu extends javax.swing.JFrame {
 
         jLabel32.setBackground(new java.awt.Color(255, 255, 255));
         jLabel32.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(0, 0, 0));
         jLabel32.setText("_________________________________________________________________________________________________");
         PanelProducto.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 500, 20));
 
-        jtDescripcion.setBackground(new java.awt.Color(255, 255, 255));
         jtDescripcion.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jtDescripcion.setForeground(new java.awt.Color(0, 0, 0));
         jtDescripcion.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jtDescripcion.setBorder(null);
         jtDescripcion.addActionListener(new java.awt.event.ActionListener() {
@@ -524,13 +514,10 @@ public class menu extends javax.swing.JFrame {
 
         jLabel13.setBackground(new java.awt.Color(255, 255, 255));
         jLabel13.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("______________________________________________________________");
         PanelProveedores.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 320, 40));
 
-        jtRazonSocial.setBackground(new java.awt.Color(255, 255, 255));
         jtRazonSocial.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jtRazonSocial.setForeground(new java.awt.Color(0, 0, 0));
         jtRazonSocial.setBorder(null);
         jtRazonSocial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -550,13 +537,10 @@ public class menu extends javax.swing.JFrame {
         PanelProveedores.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 80, -1));
 
         jLabel23.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
         jLabel23.setText("___________________");
         PanelProveedores.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 140, 20));
 
-        jtTelefonoProveedor.setBackground(new java.awt.Color(255, 255, 255));
         jtTelefonoProveedor.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jtTelefonoProveedor.setForeground(new java.awt.Color(0, 0, 0));
         jtTelefonoProveedor.setBorder(null);
         jtTelefonoProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -632,13 +616,10 @@ public class menu extends javax.swing.JFrame {
 
         jLabel18.setBackground(new java.awt.Color(255, 255, 255));
         jLabel18.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("______________________________________________________________");
         PanelProveedores.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 320, 40));
 
-        jtDomicilioProveedor.setBackground(new java.awt.Color(255, 255, 255));
         jtDomicilioProveedor.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jtDomicilioProveedor.setForeground(new java.awt.Color(0, 0, 0));
         jtDomicilioProveedor.setBorder(null);
         jtDomicilioProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -649,7 +630,7 @@ public class menu extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Proveedores", PanelProveedores);
 
-        PanelConsultas.setBackground(new java.awt.Color(255, 255, 255));
+        PanelConsultas.setBackground(new java.awt.Color(8, 65, 134));
         PanelConsultas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         botonConsultaCom.setBackground(new java.awt.Color(6, 60, 130));
@@ -698,15 +679,18 @@ public class menu extends javax.swing.JFrame {
 
         PanelConsultas.add(botonConsultaPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 260, 70));
 
-        jLabel21.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel21.setText("ELECTRONICS");
-        PanelConsultas.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 140, -1));
+        imaProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagenProductos.png"))); // NOI18N
+        imaProductos.setText("jLabel6");
+        PanelConsultas.add(imaProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 560, 480));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/a598455c-c401-45b8-b68e-566ee65d6b65.png"))); // NOI18N
-        PanelConsultas.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 270, 200));
+        imaCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagencompras.png"))); // NOI18N
+        PanelConsultas.add(imaCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 560, 480));
 
-        fondoconsul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wavy-blue-background-free-vector.jpg"))); // NOI18N
-        PanelConsultas.add(fondoconsul, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 490));
+        fondoconsul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1.png"))); // NOI18N
+        PanelConsultas.add(fondoconsul, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 570, 480));
+
+        jPanel3.setBackground(new java.awt.Color(8, 65, 134));
+        PanelConsultas.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 280, 490));
 
         jTabbedPane1.addTab("Consultas", PanelConsultas);
 
@@ -787,7 +771,6 @@ public class menu extends javax.swing.JFrame {
         });
         PanelCompra.add(btnComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 400, 170, -1));
 
-        jTCantidad.setBackground(new java.awt.Color(255, 255, 255));
         jTCantidad.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jTCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -796,7 +779,6 @@ public class menu extends javax.swing.JFrame {
         });
         PanelCompra.add(jTCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 80, 30));
 
-        jTPrecioCompra.setBackground(new java.awt.Color(255, 255, 255));
         jTPrecioCompra.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jTPrecioCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -861,13 +843,7 @@ public class menu extends javax.swing.JFrame {
         menuPrincipal.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 830, 510));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wavy-blue-background-free-vector.jpg"))); // NOI18N
-        menuPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1260, 690));
-
-        imaProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagenProductos.png"))); // NOI18N
-        menuPrincipal.add(imaProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 570, 480));
-
-        imaCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagencompras.png"))); // NOI18N
-        menuPrincipal.add(imaCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 570, 490));
+        menuPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1280, 690));
 
         getContentPane().add(menuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1260, 690));
 
@@ -1325,7 +1301,6 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -1340,12 +1315,12 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

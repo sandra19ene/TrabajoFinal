@@ -308,7 +308,7 @@ public class ProductoData {
     }
     
     public List<Producto> stockMinimo(){
-       String sql = "SELECT idProducto, nombreProducto, stock FROM producto WHERE stock < 200";
+       String sql = "SELECT idProducto, nombreProducto, stock FROM producto WHERE stock < 200 AND estado =1";
         List<Producto> productos = new ArrayList<>();
 
         try {
