@@ -260,7 +260,7 @@ public class DetalleCompraData {
         ArrayList<DetalleCompra> listaProductos = new ArrayList<DetalleCompra>();
 
         try {
-            String sql = "SELECT producto.nombreProducto, SUM(detallecompra.cantidad) AS cantidadUnidades "
+            String sql = "SELECT producto.idProducto, producto.nombreProducto, SUM(detallecompra.cantidad) AS cantidadUnidades "
                     + "FROM detallecompra "
                     + "JOIN producto ON producto.idProducto=detallecompra.idProducto "
                     + "JOIN compra ON compra.idCompra=detallecompra.idCompra "
@@ -278,7 +278,9 @@ public class DetalleCompraData {
                 DetalleCompra detalleCompra = new DetalleCompra();
 
                 Producto producto = new Producto();
-
+                
+                producto.setIdProducto(rs.getInt("idProducto"));
+                
                 producto.setNombreProducto(rs.getString("nombreProducto"));
                 detalleCompra.setProducto(producto);
                 
@@ -298,7 +300,7 @@ public class DetalleCompraData {
         ArrayList<DetalleCompra> listaProductos = new ArrayList<DetalleCompra>();
 
         try {
-            String sql = "SELECT producto.nombreProducto, SUM(detallecompra.cantidad) AS cantidadUnidades "
+            String sql = "SELECT producto.idProducto, producto.nombreProducto, SUM(detallecompra.cantidad) AS cantidadUnidades "
                     + "FROM detallecompra "
                     + "JOIN producto ON producto.idProducto=detallecompra.idProducto "
                     + "JOIN compra ON compra.idCompra=detallecompra.idCompra "
@@ -315,7 +317,9 @@ public class DetalleCompraData {
                 DetalleCompra detalleCompra = new DetalleCompra();
 
                 Producto producto = new Producto();
-
+                
+                producto.setIdProducto(rs.getInt("idProducto"));
+                
                 producto.setNombreProducto(rs.getString("nombreProducto"));
                 detalleCompra.setProducto(producto);
                 

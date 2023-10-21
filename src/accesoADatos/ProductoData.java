@@ -307,6 +307,30 @@ public class ProductoData {
         return pre;
     }
     
-    
+    public List<Producto> stockMinimo(){
+       String sql = "SELECT idProducto, nombreProducto, stock FROM producto WHERE stock < 200";
+        List<Producto> productos = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Producto producto = new Producto();
+                
+                producto.setIdProducto(rs.getInt("idProducto"));
+                producto.setNombreProducto(rs.getString("nombreProducto"));
+                producto.setStock(rs.getInt("stock"));
+
+                productos.add(producto);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto: " + ex.getMessage());
+        }
+        
+        return productos;
+   }
     
 }

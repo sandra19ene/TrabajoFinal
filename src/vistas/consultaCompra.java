@@ -67,8 +67,8 @@ public class consultaCompra extends javax.swing.JFrame {
         jbSalir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtConsultasCompras = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         jDateCompras = new com.toedter.calendar.JDateChooser();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jcCompXProve = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
@@ -110,14 +110,12 @@ public class consultaCompra extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jtConsultasCompras);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 790, 300));
+        jPanel1.add(jDateCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 170, -1));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Por Fecha:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 80, 20));
-
-        jDateCompras.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jDateCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 170, -1));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -263,6 +261,7 @@ public class consultaCompra extends javax.swing.JFrame {
     }
     
     public void cargarTablaComprasPorFecha(){
+        try{
         DetalleCompraData deta = new DetalleCompraData();
         Date fechaObtenida = jDateCompras.getDate();
         LocalDate fechaUsar = fechaObtenida.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -278,6 +277,9 @@ public class consultaCompra extends javax.swing.JFrame {
                 d.getPrecioCosto(),
                 subtotal.longValue(),
                 d.getCompra().getFecha()});
+        }
+        }catch(NullPointerException ex){
+            JOptionPane.showMessageDialog(null, "Completar fecha");
         }
     }
     

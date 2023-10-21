@@ -6,12 +6,15 @@
 package vistas;
 
 import accesoADatos.DetalleCompraData;
+import accesoADatos.ProductoData;
 import accesoADatos.ProveedorData;
 import entidades.DetalleCompra;
+import entidades.Producto;
 import entidades.Proveedor;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -188,6 +191,7 @@ public class consultaProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_jBsalirMouseClicked
 
     private void jbMasCompradoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbMasCompradoMouseClicked
+        jcProve.setSelectedIndex(0);
         modelo4.setRowCount(0);
         masCompradoEntreFechas();
     }//GEN-LAST:event_jbMasCompradoMouseClicked
@@ -195,10 +199,16 @@ public class consultaProducto extends javax.swing.JFrame {
     private void jcProveItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcProveItemStateChanged
         modelo4.setRowCount(0);
         productosPorProve();
+        jDateFecha1.setDate(null);
+        jDateFecha2.setDate(null);
     }//GEN-LAST:event_jcProveItemStateChanged
 
     private void jbStockBajoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbStockBajoMouseClicked
-        // TODO add your handling code here:
+        jcProve.setSelectedIndex(0);
+        modelo4.setRowCount(0);
+        stockBajo();
+        jDateFecha1.setDate(null);
+        jDateFecha2.setDate(null);
     }//GEN-LAST:event_jbStockBajoMouseClicked
 
     /**
@@ -255,7 +265,7 @@ public class consultaProducto extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void cargarCabeceraConsultasProductos(){
-        
+        modelo4.addColumn("ID Prod");
         modelo4.addColumn("Producto");
         modelo4.addColumn("Cantidad");
 
@@ -269,17 +279,21 @@ public class consultaProducto extends javax.swing.JFrame {
         }
     }
      public void masCompradoEntreFechas(){
-         DetalleCompraData deta = new DetalleCompraData();
-         Date fechaObtenida1 = jDateFecha1.getDate();
-        LocalDate fechaUsar1 = fechaObtenida1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        Date fechaObtenida2 = jDateFecha2.getDate();
-        LocalDate fechaUsar2 = fechaObtenida2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        
-        
-        for (DetalleCompra d : deta.productoMasCompradoEntreFechas(fechaUsar1, fechaUsar2)) {
-            modelo4.addRow(new Object[]{
-                d.getProducto().getNombreProducto(),
-                d.getCantidad()});
+         try {
+            DetalleCompraData deta = new DetalleCompraData();
+            Date fechaObtenida1 = jDateFecha1.getDate();
+            LocalDate fechaUsar1 = fechaObtenida1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            Date fechaObtenida2 = jDateFecha2.getDate();
+            LocalDate fechaUsar2 = fechaObtenida2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+            for (DetalleCompra d : deta.productoMasCompradoEntreFechas(fechaUsar1, fechaUsar2)) {
+                modelo4.addRow(new Object[]{
+                    d.getProducto().getIdProducto(),
+                    d.getProducto().getNombreProducto(),
+                    d.getCantidad()});
+            }
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "Completar fechas");
         }
      }
      
@@ -295,9 +309,21 @@ public class consultaProducto extends javax.swing.JFrame {
         
         for (DetalleCompra d : deta.productoPorProveedor(idProveedor)) {
             modelo4.addRow(new Object[]{
+                d.getProducto().getIdProducto(),
                 d.getProducto().getNombreProducto(),
                 d.getCantidad()});
         }
+        }
+    }
+     
+     public void stockBajo(){
+        ProductoData prod = new ProductoData();
+        
+        for (Producto p : prod.stockMinimo()) {
+            modelo4.addRow(new Object[]{
+                p.getIdProducto(),
+                p.getNombreProducto(),
+                p.getStock()});
         }
     }
      

@@ -21,6 +21,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -114,7 +115,11 @@ public class menu extends javax.swing.JFrame {
         columnasProductos();
         columnasProveedor();
         columnasCompras();
-
+        
+        SwingUtilities.invokeLater(() -> {
+            PanelProducto.setVisible(true);
+            revisionDeStock();
+        });
     }
 
     /**
@@ -1643,5 +1648,12 @@ public class menu extends javax.swing.JFrame {
         jtDetalleCompra.getColumnModel().getColumn(5).setPreferredWidth(90);
 
     }
+    
+    public void revisionDeStock(){
+        if(! pro.stockMinimo().isEmpty()){
+            JOptionPane.showMessageDialog(PanelProducto, "PRODUCTOS CON STOCK BAJO\n Realice Consulta de Productos");
 
+        }
+    }
+    
 }
