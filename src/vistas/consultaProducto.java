@@ -16,6 +16,7 @@ import java.time.ZoneId;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -50,8 +51,7 @@ public class consultaProducto extends javax.swing.JFrame {
     
     public consultaProducto() {
         initComponents();
-        jDateFecha1.getDateEditor().setEnabled(false);
-        jDateFecha2.getDateEditor().setEnabled(false);
+     
         cargarCabeceraConsultasProductos();
         cargarComboProve2();
         
@@ -130,7 +130,7 @@ public class consultaProducto extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jtConsultaProduc);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 690, 240));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 690, 180));
 
         jLabel1.setFont(new java.awt.Font("Roboto Black", 1, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -213,6 +213,7 @@ public class consultaProducto extends javax.swing.JFrame {
         jcProve.setSelectedIndex(0);
         modelo4.setRowCount(0);
         masCompradoEntreFechas();
+        jcConsulCategoria.setSelectedIndex(0);
     }//GEN-LAST:event_jbMasCompradoMouseClicked
 
     private void jcProveItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcProveItemStateChanged
@@ -220,14 +221,19 @@ public class consultaProducto extends javax.swing.JFrame {
         productosPorProve();
         jDateFecha1.setDate(null);
         jDateFecha2.setDate(null);
+        jcConsulCategoria.setSelectedIndex(0);
     }//GEN-LAST:event_jcProveItemStateChanged
 
     private void jbStockBajoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbStockBajoMouseClicked
         jcProve.setSelectedIndex(0);
         modelo4.setRowCount(0);
         stockBajo();
+        if (modelo4.getRowCount()==0) {
+            JOptionPane.showMessageDialog(this, "No hay Productos con stock bajo.");
+        }
         jDateFecha1.setDate(null);
         jDateFecha2.setDate(null);
+        jcConsulCategoria.setSelectedIndex(0);
     }//GEN-LAST:event_jbStockBajoMouseClicked
 
     private void jcConsulCategoriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcConsulCategoriaItemStateChanged
@@ -319,11 +325,15 @@ public class consultaProducto extends javax.swing.JFrame {
             Date fechaObtenida2 = jDateFecha2.getDate();
             LocalDate fechaUsar2 = fechaObtenida2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
+            if(fechaUsar2.isAfter(fechaUsar1)){
             for (DetalleCompra d : deta.productoMasCompradoEntreFechas(fechaUsar1, fechaUsar2)) {
                 modelo4.addRow(new Object[]{
                     d.getProducto().getIdProducto(),
                     d.getProducto().getNombreProducto(),
                     d.getCantidad()});
+            }
+            }else{
+                JOptionPane.showMessageDialog(this, "Ingrese fecha más antigua primero");
             }
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(null, "Completar fechas");

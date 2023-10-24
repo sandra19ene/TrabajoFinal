@@ -1,6 +1,7 @@
 package accesoADatos;
 
 import entidades.Compra;
+import entidades.Proveedor;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -83,6 +84,31 @@ public class CompraData {
     }
     
     
+public Compra obtenerCompraPorId(int idCompra) {
+    String sql = "SELECT * FROM compra WHERE idCompra = ?";
+    Compra compra = null;
+
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, idCompra);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            compra = new Compra();
+            compra.setIdCompra(rs.getInt("idCompra"));
+         
+            compra.setFecha(rs.getDate("fecha").toLocalDate());
+           
+           
+        }
+
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'compra' / " + ex.getMessage());
+    }
+
+    return compra;
+}
 
 
 

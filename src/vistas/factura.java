@@ -5,9 +5,11 @@
  */
 package vistas;
 
+import accesoADatos.CompraData;
 import accesoADatos.DetalleCompraData;
 
 import accesoADatos.ProveedorData;
+import entidades.Compra;
 
 import entidades.DetalleCompra;
 import entidades.Proveedor;
@@ -16,6 +18,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.PrintJob;
 import java.awt.Toolkit;
+import java.time.format.DateTimeFormatter;
 
 import java.util.List;
 import javax.swing.*;
@@ -34,22 +37,29 @@ public class factura extends javax.swing.JFrame {
     DetalleCompraData dcd = new DetalleCompraData();
     ProveedorData prove = new ProveedorData();
     Proveedor pro = new Proveedor();
+    Compra co = new Compra();
+    CompraData cda = new CompraData();
 
     public factura(int idCompra) {
         initComponents();
-        jlfechafa.setText(m.fechaActual());
+
         jlNroCompra.setText("" + idCompra);
         cargarCabezera();
         cargarTablaDetalleFac(idCompra);
         calcularTotal();
         pro = prove.getDatos(idCompra);
+        co = cda.obtenerCompraPorId(idCompra);
+        
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy"); // El formato que desees
+        jlfechafa.setText(co.getFecha().format(formatter));
+
         razonSocialFac.setText("PROVEMAX S.A");
         membreteProve.setText(pro.getRazonSocial());
         membretedomi.setText(pro.getDomicilio());
         membretetel.setText(pro.getTelefono());
         DomicilioFac.setText("Av.Group 45 Caba");
         TelefonoFac.setText("4545-4545");
-        generarNroCompra();
+        generarNroCompra(idCompra);
 
     }
 
@@ -288,7 +298,6 @@ public class factura extends javax.swing.JFrame {
 
     private void jbSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbSalirMouseClicked
 
-
         dispose();
 
 
@@ -381,7 +390,7 @@ public class factura extends javax.swing.JFrame {
         jtfactura.setModel(modelo);
         JTableHeader header = jtfactura.getTableHeader();
         header.setOpaque(false);
-        header.setBackground(Color.blue);
+        header.setBackground(Color.white);
         header.setForeground(Color.black);
 
         TableColumnModel columnModel = jtfactura.getColumnModel();
@@ -458,21 +467,21 @@ public class factura extends javax.swing.JFrame {
 //        }catch (Exception e){
 //        }
 //}
-    public void generarNroCompra() {
-        Integer nro = dcd.obtenerIdDetalle();
+    public void generarNroCompra(int idCom) {
+       
 
-        if (nro < 10) {
-            jlNroCompra.setText("000-00000"+nro);
+        if (idCom < 10) {
+            jlNroCompra.setText("000-00000" + idCom);
         } else {
-            if (nro < 100) {
-            jlNroCompra.setText("000-0000"+nro);
+            if (idCom < 100) {
+                jlNroCompra.setText("000-0000" + idCom);
             } else {
-            if (nro < 1000) {
-            jlNroCompra.setText("000-000"+nro);
-            
-        }
-    }
-    
+                if (idCom < 1000) {
+                    jlNroCompra.setText("000-000" + idCom);
+
+                }
+            }
+
         }
     }
 }

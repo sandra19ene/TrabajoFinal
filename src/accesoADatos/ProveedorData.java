@@ -78,25 +78,22 @@ public class ProveedorData {
 
     
    public void eliminarProveedor(int idProveedor) {
-    String sql = "DELETE FROM proveedor WHERE idProveedor = ?";
+        String sql = "UPDATE proveedor SET estado=0 WHERE idProveedor = ? ";
 
-    try {
-        PreparedStatement ps = con.prepareStatement(sql);
-        ps.setInt(1, idProveedor);
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idProveedor);
 
-        int exito = ps.executeUpdate();
+            int exito = ps.executeUpdate();
 
-        if (exito == 1) {
-            JOptionPane.showMessageDialog(null, "Proveedor eliminado exitosamente");
-        } else {
-            JOptionPane.showMessageDialog(null, "No se encontró el proveedor con el ID especificado");
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Proveedor eliminado con éxito");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'proveedor '/" + ex.getMessage());
         }
-
-        ps.close();
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'proveedor'/"+ ex.getMessage());
     }
-}
     
     public List<Proveedor> listaProveedores() {
         String sql = "SELECT * FROM proveedor ";

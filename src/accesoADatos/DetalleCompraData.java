@@ -197,7 +197,7 @@ public class DetalleCompraData {
    public List<DetalleCompra> obtenerDetalleCompraFull(int idCompra) {
     ArrayList<DetalleCompra> listaCompra = new ArrayList<DetalleCompra>();
     String sql = "SELECT detallecompra.idDetalle, detallecompra.cantidad, detallecompra.precioCosto, detallecompra.subTotal, " +
-                 "producto.nombreProducto, producto.descripcion, proveedor.razonSocial " +
+                 "producto.nombreProducto, producto.descripcion, proveedor.razonSocial,compra.fecha " +
                  "FROM compra " +
                  "INNER JOIN detallecompra ON detallecompra.idCompra = compra.idCompra " +
                  "INNER JOIN producto ON producto.idProducto = detallecompra.idProducto " +
@@ -225,6 +225,7 @@ public class DetalleCompraData {
 
             producto.setNombreProducto(rs.getString("nombreProducto"));
             producto.setDescripcion(rs.getString("descripcion"));
+           compra.setFecha(rs.getDate("fecha").toLocalDate());
             detalleCompra.setProducto(producto);
 
             detalleCompra.setCompra(compra);

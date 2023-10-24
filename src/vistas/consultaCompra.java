@@ -46,9 +46,11 @@ public class consultaCompra extends javax.swing.JFrame {
             }
         }
     };
+
     public consultaCompra() {
         initComponents();
-        jDateCompras.getDateEditor().setEnabled(false);
+
+       
         cargarCabeceraConsultasCompras();
         cargarComboProve2();
         columnasCompras();
@@ -70,6 +72,7 @@ public class consultaCompra extends javax.swing.JFrame {
         jDateCompras = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jbVerFactura = new javax.swing.JButton();
         jcCompXProve = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jtCompXFact = new javax.swing.JTextField();
@@ -109,7 +112,7 @@ public class consultaCompra extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jtConsultasCompras);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 790, 300));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 790, 240));
         jPanel1.add(jDateCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 170, -1));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -122,10 +125,23 @@ public class consultaCompra extends javax.swing.JFrame {
         jLabel2.setText("Por Proveedor:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 110, 20));
 
+        jbVerFactura.setText("Ver Factura  ");
+        jbVerFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbVerFacturaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbVerFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 480, 160, -1));
+
         jcCompXProve.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Proveedor" }));
         jcCompXProve.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jcCompXProveItemStateChanged(evt);
+            }
+        });
+        jcCompXProve.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcCompXProveActionPerformed(evt);
             }
         });
         jPanel1.add(jcCompXProve, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 170, -1));
@@ -172,7 +188,7 @@ public class consultaCompra extends javax.swing.JFrame {
     private void jbSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbSalirMouseClicked
         // TODO add your handling code here:
         dispose();
-        
+
     }//GEN-LAST:event_jbSalirMouseClicked
 
     private void jbListarFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbListarFechaMouseClicked
@@ -191,8 +207,26 @@ public class consultaCompra extends javax.swing.JFrame {
 
     private void jcCompXProveItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcCompXProveItemStateChanged
         modelo3.setRowCount(0);
-        cargarTablaComprasPorProveedor();   
+        cargarTablaComprasPorProveedor();
     }//GEN-LAST:event_jcCompXProveItemStateChanged
+
+    private void jbVerFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVerFacturaActionPerformed
+
+        int idp = jtConsultasCompras.getSelectedRow();
+        if (idp >= 0) {
+            int id = Integer.parseInt(this.jtConsultasCompras.getValueAt(idp, 0).toString());
+            factura p = new factura(id);
+            p.setVisible(true);
+            p.setLocationRelativeTo(null);
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor, selecciona una fila");
+        }
+
+    }//GEN-LAST:event_jbVerFacturaActionPerformed
+
+    private void jcCompXProveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcCompXProveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcCompXProveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,13 +275,14 @@ public class consultaCompra extends javax.swing.JFrame {
     private javax.swing.JButton jbListarFact;
     private javax.swing.JButton jbListarFecha;
     private javax.swing.JButton jbSalir;
+    private javax.swing.JButton jbVerFactura;
     private javax.swing.JComboBox<String> jcCompXProve;
     private javax.swing.JTextField jtCompXFact;
     private javax.swing.JTable jtConsultasCompras;
     // End of variables declaration//GEN-END:variables
 
-    public void cargarCabeceraConsultasCompras(){
-        
+    public void cargarCabeceraConsultasCompras() {
+
         modelo3.addColumn("N°de Compra");
         modelo3.addColumn("Proveedor");
         modelo3.addColumn("ID Producto");
@@ -259,59 +294,59 @@ public class consultaCompra extends javax.swing.JFrame {
 
         jtConsultasCompras.setModel(modelo3);
     }
-    
-    public void cargarTablaComprasPorFecha(){
-        try{
-        DetalleCompraData deta = new DetalleCompraData();
-        Date fechaObtenida = jDateCompras.getDate();
-        LocalDate fechaUsar = fechaObtenida.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-        for (DetalleCompra d : deta.comprasPorFecha(fechaUsar)) {
-            Double subtotal = d.getPrecioCosto()*d.getCantidad();
-            modelo3.addRow(new Object[]{
-                d.getCompra().getIdCompra(),
-                d.getCompra().getProveedor().getRazonSocial(),
-                d.getProducto().getIdProducto(),
-                d.getProducto().getNombreProducto(),
-                d.getCantidad(),
-                d.getPrecioCosto(),
-                subtotal.longValue(),
-                d.getCompra().getFecha()});
-        }
-        }catch(NullPointerException ex){
+    public void cargarTablaComprasPorFecha() {
+        try {
+            DetalleCompraData deta = new DetalleCompraData();
+            Date fechaObtenida = jDateCompras.getDate();
+            LocalDate fechaUsar = fechaObtenida.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+            for (DetalleCompra d : deta.comprasPorFecha(fechaUsar)) {
+                Double subtotal = d.getPrecioCosto() * d.getCantidad();
+                modelo3.addRow(new Object[]{
+                    d.getCompra().getIdCompra(),
+                    d.getCompra().getProveedor().getRazonSocial(),
+                    d.getProducto().getIdProducto(),
+                    d.getProducto().getNombreProducto(),
+                    d.getCantidad(),
+                    d.getPrecioCosto(),
+                    subtotal.longValue(),
+                    d.getCompra().getFecha()});
+            }
+        } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(null, "Completar fecha");
         }
     }
-    
+
     public void cargarComboProve2() {
         ProveedorData prove = new ProveedorData();
         for (Proveedor proveedor : prove.listaProveedores()) {
             jcCompXProve.addItem(proveedor.getRazonSocial());
         }
     }
-    
-    public void cargarTablaComprasPorProveedor(){
-        
-        if( ! jcCompXProve.getSelectedItem().toString().equals("Seleccione Proveedor")){
-        DetalleCompraData deta = new DetalleCompraData();
-        ProveedorData prove = new ProveedorData();
-        
-        String item = (String) jcCompXProve.getSelectedItem();
-        Proveedor proveedor = prove.buscarProveedor(item);
-        int idProveedor = proveedor.getIdProveedor();
 
-        for (DetalleCompra d : deta.comprasPorProveedor(idProveedor)) {
-            Double subtotal = d.getPrecioCosto()*d.getCantidad();
-            modelo3.addRow(new Object[]{
-                d.getCompra().getIdCompra(),
-                d.getCompra().getProveedor().getRazonSocial(),
-                d.getProducto().getIdProducto(),
-                d.getProducto().getNombreProducto(),
-                d.getCantidad(),
-                d.getPrecioCosto(),
-                subtotal,
-                d.getCompra().getFecha()});
-        }
+    public void cargarTablaComprasPorProveedor() {
+
+        if (!jcCompXProve.getSelectedItem().toString().equals("Seleccione Proveedor")) {
+            DetalleCompraData deta = new DetalleCompraData();
+            ProveedorData prove = new ProveedorData();
+
+            String item = (String) jcCompXProve.getSelectedItem();
+            Proveedor proveedor = prove.buscarProveedor(item);
+            int idProveedor = proveedor.getIdProveedor();
+
+            for (DetalleCompra d : deta.comprasPorProveedor(idProveedor)) {
+                Double subtotal = d.getPrecioCosto() * d.getCantidad();
+                modelo3.addRow(new Object[]{
+                    d.getCompra().getIdCompra(),
+                    d.getCompra().getProveedor().getRazonSocial(),
+                    d.getProducto().getIdProducto(),
+                    d.getProducto().getNombreProducto(),
+                    d.getCantidad(),
+                    d.getPrecioCosto(),
+                    subtotal,
+                    d.getCompra().getFecha()});
+            }
         }
     }
 
@@ -359,4 +394,5 @@ public class consultaCompra extends javax.swing.JFrame {
         jtConsultasCompras.getColumnModel().getColumn(7).setPreferredWidth(60);
     }
 
+   
 }
