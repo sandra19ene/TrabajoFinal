@@ -77,6 +77,8 @@ public class consultaProducto extends javax.swing.JFrame {
         jDateFecha2 = new com.toedter.calendar.JDateChooser();
         jLabel5 = new javax.swing.JLabel();
         jDateFecha1 = new com.toedter.calendar.JDateChooser();
+        jcConsulCategoria = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
         jcProve = new javax.swing.JComboBox<>();
         jbStockBajo = new javax.swing.JButton();
         jbMasComprado = new javax.swing.JButton();
@@ -84,7 +86,6 @@ public class consultaProducto extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(690, 530));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -129,7 +130,7 @@ public class consultaProducto extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jtConsultaProduc);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 690, 300));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 690, 240));
 
         jLabel1.setFont(new java.awt.Font("Roboto Black", 1, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -146,9 +147,27 @@ public class consultaProducto extends javax.swing.JFrame {
         jLabel5.setText("y");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 80, 10, -1));
 
-        jDateFecha1.setForeground(new java.awt.Color(0, 0, 0));
         jDateFecha1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jPanel1.add(jDateFecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 140, -1));
+
+        jcConsulCategoria.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jcConsulCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Categoria", "TV y AUDIO", "TECNOLOGIA", "ELECTROHOGAR" }));
+        jcConsulCategoria.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcConsulCategoriaItemStateChanged(evt);
+            }
+        });
+        jcConsulCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcConsulCategoriaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jcConsulCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 160, -1));
+
+        jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Por Categoria");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 100, 20));
 
         jcProve.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Proveedor" }));
         jcProve.addItemListener(new java.awt.event.ItemListener() {
@@ -211,6 +230,15 @@ public class consultaProducto extends javax.swing.JFrame {
         jDateFecha2.setDate(null);
     }//GEN-LAST:event_jbStockBajoMouseClicked
 
+    private void jcConsulCategoriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcConsulCategoriaItemStateChanged
+       modelo4.setRowCount(0);
+        productosPorCategoria();
+    }//GEN-LAST:event_jcConsulCategoriaItemStateChanged
+
+    private void jcConsulCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcConsulCategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcConsulCategoriaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -256,10 +284,12 @@ public class consultaProducto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbMasComprado;
     private javax.swing.JButton jbStockBajo;
+    private javax.swing.JComboBox<String> jcConsulCategoria;
     private javax.swing.JComboBox<String> jcProve;
     private javax.swing.JTable jtConsultaProduc;
     // End of variables declaration//GEN-END:variables
@@ -278,6 +308,9 @@ public class consultaProducto extends javax.swing.JFrame {
             jcProve.addItem(proveedor.getRazonSocial());
         }
     }
+    
+    
+    
      public void masCompradoEntreFechas(){
          try {
             DetalleCompraData deta = new DetalleCompraData();
@@ -312,6 +345,23 @@ public class consultaProducto extends javax.swing.JFrame {
                 d.getProducto().getIdProducto(),
                 d.getProducto().getNombreProducto(),
                 d.getCantidad()});
+        }
+        }
+    }
+     
+       public void productosPorCategoria() {
+        
+        if( ! jcConsulCategoria.getSelectedItem().toString().equals("Seleccione Proveedor")){ 
+       ProductoData prod=new ProductoData();
+        
+        String item = (String) jcConsulCategoria.getSelectedItem();
+    
+        
+        for (Producto d : prod.listaProductosPorCategoria(item)) {
+            modelo4.addRow(new Object[]{
+                d.getIdProducto(),
+                d.getNombreProducto(),
+                d.getStock()});
         }
         }
     }

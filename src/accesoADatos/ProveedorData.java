@@ -72,25 +72,7 @@ public class ProveedorData {
         }
     }
     
-//    public void eliminarProveedor(Proveedor proveedor) {
-//        String sql = "DELETE FROM proveedor WHERE idProveedor=?";
-//        
-//        try {
-//            PreparedStatement ps = con.prepareStatement(sql, org.mariadb.jdbc.Statement.RETURN_GENERATED_KEYS);
-//            ps.setInt(1, proveedor.getIdProveedor());
-//            
-//            int exito = ps.executeUpdate();
-//            ResultSet rs = ps.getGeneratedKeys();
-//            
-//            if (exito == 1) {
-//                JOptionPane.showMessageDialog(null, "Proveedor eliminado");
-//            }
-//            ps.close();
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, "Error al ingresar a la tabla 'proveedor'" + ex.getMessage());
-//        }
-//        
-//    }
+
     
 
 
@@ -107,12 +89,12 @@ public class ProveedorData {
         if (exito == 1) {
             JOptionPane.showMessageDialog(null, "Proveedor eliminado exitosamente");
         } else {
-            JOptionPane.showMessageDialog(null, "No se encontró el producto con el ID especificado");
+            JOptionPane.showMessageDialog(null, "No se encontró el proveedor con el ID especificado");
         }
 
         ps.close();
     } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'producto'/"+ ex.getMessage());
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'proveedor'/"+ ex.getMessage());
     }
 }
     
@@ -141,7 +123,7 @@ public class ProveedorData {
             ps.close();            
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla proveedor " + ex.getMessage());
         }
         
         return prove;
@@ -166,12 +148,12 @@ public class ProveedorData {
             proveedor.setDomicilio(rs.getString("domicilio"));
             proveedor.setTelefono(rs.getString("telefono"));
         } else {
-            JOptionPane.showMessageDialog(null, "La proveedor no existe");
+            JOptionPane.showMessageDialog(null, "El proveedor no existe");
         }
         ps.close();
 
     } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumnos" + ex.getMessage());
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Proveedor" + ex.getMessage());
     }
     return proveedor;
 }
@@ -195,7 +177,7 @@ public Proveedor buscarIDProveedor(String razonSocial) {
         ps.close();
 
     } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumnos" + ex.getMessage());
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Proveedor" + ex.getMessage());
     }
     return proveedor;
     }
@@ -216,7 +198,7 @@ public Proveedor buscarIDProveedor(String razonSocial) {
             pr.setRazonSocial(rs.getString("razonSocial"));
             pr.setDomicilio(rs.getString("domicilio"));
             pr.setTelefono(rs.getString("telefono"));
-            // Aquí puedes obtener información relacionada a la compra si es necesario
+          
         }
     } catch (SQLException e){
         JOptionPane.showMessageDialog(null, e.toString());

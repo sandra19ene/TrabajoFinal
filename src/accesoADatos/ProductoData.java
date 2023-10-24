@@ -268,11 +268,9 @@ public class ProductoData {
            
      
 
-            int exito = ps.executeUpdate();
+             ps.executeUpdate();
 
-           if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Stock actualizado  con éxito");
-            }
+           
             
             ps.close();
         } catch (SQLException ex) {
@@ -293,11 +291,9 @@ public class ProductoData {
            
      
 
-            int exito = ps.executeUpdate();
+             ps.executeUpdate();
 
-           if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Precio actualizado  con éxito");
-            }
+           
             
             ps.close();
         } catch (SQLException ex) {
@@ -308,7 +304,7 @@ public class ProductoData {
     }
     
     public List<Producto> stockMinimo(){
-       String sql = "SELECT idProducto, nombreProducto, stock FROM producto WHERE stock < 200 AND estado =1";
+       String sql = "SELECT idProducto, nombreProducto, stock FROM producto WHERE stock < 10 AND estado =1";
         List<Producto> productos = new ArrayList<>();
 
         try {
@@ -332,5 +328,36 @@ public class ProductoData {
         
         return productos;
    }
+    
+     public List<Producto> listaProductosPorCategoria(String cate ) {
+        String sql = "SELECT * FROM producto WHERE estado=1 AND categoria=?";
+        List<Producto> productos = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, cate);
+            
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Producto producto = new Producto();
+
+                producto.setIdProducto(rs.getInt("idProducto"));
+                producto.setNombreProducto(rs.getString("nombreProducto"));
+                producto.setStock(rs.getInt("stock"));
+                
+
+                productos.add(producto);
+            }
+
+            rs.close();
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto  " + ex.getMessage());
+        }
+
+        return productos;
+    }
     
 }

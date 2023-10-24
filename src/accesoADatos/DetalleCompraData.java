@@ -40,7 +40,7 @@ public class DetalleCompraData {
 
             if (rs.next()) {
                 idDetalle = rs.getInt(1);
-                JOptionPane.showMessageDialog(null, "Detalle de Compra generado.");
+               // JOptionPane.showMessageDialog(null, "Detalle de Compra generado.");
 
             }
             ps.close();
