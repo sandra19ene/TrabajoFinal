@@ -40,7 +40,7 @@ public class DetalleCompraData {
 
             if (rs.next()) {
                 idDetalle = rs.getInt(1);
-               // JOptionPane.showMessageDialog(null, "Detalle de Compra generado.");
+            
 
             }
             ps.close();
@@ -241,21 +241,21 @@ public class DetalleCompraData {
     return null; 
    }
 
-   public int obtenerIdDetalle(){
-        String sql = "SELECT MAX(idDetalle) AS ultimoId FROM detallecompra";
-        int ultId = 0;
-        try {
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {                
-                ultId = rs.getInt("ultimoId");
-            }
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Detalle Compra"+ ex.getMessage());
-        }
-        return ultId;
-    }
+//   public int obtenerIdDetalle(){
+//        String sql = "SELECT MAX(idDetalle) AS ultimoId FROM detallecompra";
+//        int ultId = 0;
+//        try {
+//            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+//            ResultSet rs = ps.executeQuery();
+//            if (rs.next()) {                
+//                ultId = rs.getInt("ultimoId");
+//            }
+//            ps.close();
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Detalle Compra"+ ex.getMessage());
+//        }
+//        return ultId;
+//    }
    
     public List<DetalleCompra> productoMasCompradoEntreFechas(LocalDate fecha1, LocalDate fecha2) {
         ArrayList<DetalleCompra> listaProductos = new ArrayList<DetalleCompra>();

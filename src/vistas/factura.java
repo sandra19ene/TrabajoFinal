@@ -30,7 +30,7 @@ import javax.swing.table.TableColumnModel;
 public class factura extends javax.swing.JFrame {
 
     DefaultTableModel modelo = new DefaultTableModel();
-    menu m = new menu();
+ 
 
     JFrame frame = new JFrame();
     DetalleCompra dc = new DetalleCompra();
@@ -420,53 +420,11 @@ public class factura extends javax.swing.JFrame {
             total += Double.parseDouble(subtt.toString());
         }
 
-        jtTotal.setText("" + total);
+        jtTotal.setText(String.format("%.2f", total));
 
     }
 
-//private void pdf(){
-//        try{
-//        
-//        FileOutputStream archivo;
-//        File file = new File("src/pdf/factura.pdf");
-//        archivo = new FileOutputStream(file);
-//       Document doc= new Document();
-//       PdfWriter.getInstance(doc, archivo);
-//       doc.open();
-//       Image img = Image.getInstance("src/imagenes/LOGOPVM.png");
-//       
-//       Paragraph fecha = new Paragraph();
-//       
-//       Font negrita = new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD, BaseColor.BLUE);
-//       fecha.add(Chunk.NEWLINE);
-//       Date date = new Date();
-//       fecha.add("Factura: 1\n"+"Fecha: "+ new SimpleDateFormat("dd-mm-yyyy").format(date)+ "\n\n");
-//       PdfPTable Encabezado = new PdfPTable(4);
-//       Encabezado.setWidthPercentage(100);
-//       Encabezado.getDefaultCell().setBorder(0);
-//       float[] ColumnaEncabezado = new float[]{20f,40f,70f,20f,20f};
-//       Encabezado.setWidths(ColumnaEncabezado);
-//       Encabezado.setHorizontalAlignment(Element.ALIGN_LEFT);
-//       
-//       Encabezado.addCell(img);
-//      // String ruc ="2125565654";
-//       String nom ="Provemax";
-//       String dir ="Av.Groups 45 ";
-//       String tel ="1130975132";
-//       
-//       Encabezado.addCell("");
-//       Encabezado.addCell("Nombre: "+nom+ "\nDireccion: "+dir+ "\nTelefono: " +tel);
-//       Encabezado.addCell(fecha);
-//       doc.add(Encabezado);
-//       
-//       
-//       doc.close();
-//       archivo.close();
-//       
-//       
-//        }catch (Exception e){
-//        }
-//}
+
     public void generarNroCompra(int idCom) {
        
 

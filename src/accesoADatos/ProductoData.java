@@ -22,34 +22,34 @@ public class ProductoData {
        
     }
 
-    public Producto buscarProducto(String nombre) {
-        String sql = "SELECT  * FROM producto WHERE nombreProducto=? ";
-        Producto produc = null;
-
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-
-            ps.setString(1, nombre);
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                produc = new Producto();
-                produc.setIdProducto(rs.getInt("idProducto"));
-                produc.setNombreProducto(rs.getString("nombreProducto"));
-                produc.setDescripcion(rs.getString("descripcion"));
-                produc.setPrecioActual(rs.getDouble("precioActual"));
-                produc.setStock(rs.getInt("stock"));
-                produc.setCategoria(rs.getString("categoria"));
-            } else {
-                JOptionPane.showMessageDialog(null, "El producto no existe");
-            }
-            ps.close();
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto " + ex.getMessage());
-        }
-        return produc;
-    }
+//    public Producto buscarProducto(String nombre) {
+//        String sql = "SELECT  * FROM producto WHERE nombreProducto=? ";
+//        Producto produc = null;
+//
+//        try {
+//            PreparedStatement ps = con.prepareStatement(sql);
+//
+//            ps.setString(1, nombre);
+//            ResultSet rs = ps.executeQuery();
+//
+//            if (rs.next()) {
+//                produc = new Producto();
+//                produc.setIdProducto(rs.getInt("idProducto"));
+//                produc.setNombreProducto(rs.getString("nombreProducto"));
+//                produc.setDescripcion(rs.getString("descripcion"));
+//                produc.setPrecioActual(rs.getDouble("precioActual"));
+//                produc.setStock(rs.getInt("stock"));
+//                produc.setCategoria(rs.getString("categoria"));
+//            } else {
+//                JOptionPane.showMessageDialog(null, "El producto no existe");
+//            }
+//            ps.close();
+//
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto " + ex.getMessage());
+//        }
+//        return produc;
+//    }
 
     public void guardarProducto(Producto producto) {
         String sql = "INSERT INTO producto (nombreProducto, descripcion, precioActual, stock, categoria,estado) VALUES (?,?,?,?,?,true)";
@@ -102,24 +102,7 @@ public class ProductoData {
         }
     }
 
-//    public void eliminarProducto(Producto producto){
-//        String sql = "UPDATE producto SET estado=? WHERE idProducto = ? ";
-//        
-//        try {
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ps.setBoolean(1, producto.isEstado());
-//            ps.setInt(2, producto.getIdProducto());
-//            
-//            int exito = ps.executeUpdate();
-//
-//            if (exito == 1) {
-//                JOptionPane.showMessageDialog(null, "Estado de producto actualizado");
-//            }
-//            ps.close();
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla 'producto'/"+ ex.getMessage());
-//        }
-//    }
+
     public void eliminarProducto(int idProducto) {
         String sql = "UPDATE producto SET estado=0 WHERE idProducto = ? ";
 
@@ -193,32 +176,7 @@ public class ProductoData {
         return producto;
     }
 
-//     public void consultaProveedor (JComboBox proveedor) {
-//    String sql = "SELECT nombre FROM proveedor ";   
-//    List<Producto> productos = new ArrayList<>();
-//
-//    try {
-//        PreparedStatement ps = con.prepareStatement(sql);
-//        ResultSet rs = ps.executeQuery();
-//
-//        while (rs.next()) {
-//           
-//       
-//            
-//           proveedor.addItem(rs.getString("razonSocial"));
-//            
-//        }
-//
-//        rs.close(); 
-//        ps.close(); 
-//
-//    } catch (SQLException ex) {
-//        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto: " + ex.getMessage());
-//    }
-//
-//    
-//}
-  
+ 
 
 
    public Producto obtenerProducto(int id) {

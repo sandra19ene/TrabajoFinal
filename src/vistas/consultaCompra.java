@@ -5,9 +5,9 @@
  */
 package vistas;
 
-import accesoADatos.CompraData;
+
 import accesoADatos.DetalleCompraData;
-import accesoADatos.ProductoData;
+
 import accesoADatos.ProveedorData;
 import entidades.DetalleCompra;
 import entidades.Proveedor;
@@ -66,12 +66,12 @@ public class consultaCompra extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jbSalir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtConsultasCompras = new javax.swing.JTable();
         jDateCompras = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jbSalir = new javax.swing.JButton();
         jbVerFactura = new javax.swing.JButton();
         jcCompXProve = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
@@ -89,15 +89,6 @@ public class consultaCompra extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jbSalir.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jbSalir.setText("Salir");
-        jbSalir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jbSalirMouseClicked(evt);
-            }
-        });
-        jPanel1.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, 110, -1));
 
         jtConsultasCompras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -125,13 +116,28 @@ public class consultaCompra extends javax.swing.JFrame {
         jLabel2.setText("Por Proveedor:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 110, 20));
 
+        jbSalir.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jbSalir.setText("Salir");
+        jbSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbSalirMouseClicked(evt);
+            }
+        });
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 480, 160, -1));
+
+        jbVerFactura.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jbVerFactura.setText("Ver Factura  ");
         jbVerFactura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbVerFacturaActionPerformed(evt);
             }
         });
-        jPanel1.add(jbVerFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 480, 160, -1));
+        jPanel1.add(jbVerFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 480, 160, -1));
 
         jcCompXProve.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Proveedor" }));
         jcCompXProve.addItemListener(new java.awt.event.ItemListener() {
@@ -185,12 +191,6 @@ public class consultaCompra extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbSalirMouseClicked
-        // TODO add your handling code here:
-        dispose();
-
-    }//GEN-LAST:event_jbSalirMouseClicked
-
     private void jbListarFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbListarFechaMouseClicked
         jcCompXProve.setSelectedIndex(0);
         modelo3.setRowCount(0);
@@ -227,6 +227,14 @@ public class consultaCompra extends javax.swing.JFrame {
     private void jcCompXProveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcCompXProveActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcCompXProveActionPerformed
+
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void jbSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbSalirMouseClicked
+        dispose();
+    }//GEN-LAST:event_jbSalirMouseClicked
 
     /**
      * @param args the command line arguments

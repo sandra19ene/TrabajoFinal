@@ -155,30 +155,30 @@ public class ProveedorData {
     return proveedor;
 }
 
-public Proveedor buscarIDProveedor(String razonSocial) {
-    String sql = "SELECT  idProveedor FROM proveedor WHERE razonSocial=? ";
-        Proveedor proveedor = new Proveedor();
-    try {
-        PreparedStatement ps = con.prepareStatement(sql);
-        
-        ps.setString(1, razonSocial);
-        ResultSet rs = ps.executeQuery();
-
-        if (rs.next()) {
-            
-            proveedor.setIdProveedor(rs.getInt("idProveedor"));
-
-        } else {
-            JOptionPane.showMessageDialog(null, "El proveedor no existe");
-        }
-        ps.close();
-
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Proveedor" + ex.getMessage());
-    }
-    return proveedor;
-    }
-    
+//public Proveedor buscarIDProveedor(String razonSocial) {
+//    String sql = "SELECT  idProveedor FROM proveedor WHERE razonSocial=? ";
+//        Proveedor proveedor = new Proveedor();
+//    try {
+//        PreparedStatement ps = con.prepareStatement(sql);
+//        
+//        ps.setString(1, razonSocial);
+//        ResultSet rs = ps.executeQuery();
+//
+//        if (rs.next()) {
+//            
+//            proveedor.setIdProveedor(rs.getInt("idProveedor"));
+//
+//        } else {
+//            JOptionPane.showMessageDialog(null, "El proveedor no existe");
+//        }
+//        ps.close();
+//
+//    } catch (SQLException ex) {
+//        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Proveedor" + ex.getMessage());
+//    }
+//    return proveedor;
+//    }
+//    
 
    public Proveedor getDatos(int idCompra){
     String sql = "SELECT proveedor.*, compra.* " +
