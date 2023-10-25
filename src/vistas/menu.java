@@ -358,6 +358,7 @@ public class menu extends javax.swing.JFrame {
         menuPrincipal.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 320, 510));
 
         jTabbedPane1.setBackground(new java.awt.Color(6, 60, 130));
+        jTabbedPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTabbedPane1.setForeground(new java.awt.Color(6, 60, 130));
         jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1619,4 +1620,6 @@ public class menu extends javax.swing.JFrame {
         }
     }
 
+    
+    
 }
