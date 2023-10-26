@@ -46,7 +46,7 @@ public class factura extends javax.swing.JFrame {
         jlNroCompra.setText("" + idCompra);
         cargarCabezera();
         cargarTablaDetalleFac(idCompra);
-        calcularTotal();
+        calcularTotal(idCompra);
         pro = prove.getDatos(idCompra);
         co = cda.obtenerCompraPorId(idCompra);
         
@@ -412,16 +412,14 @@ public class factura extends javax.swing.JFrame {
 
     }
 
-    private void calcularTotal() {
+    private void calcularTotal(int idCompra) { 
+       DetalleCompraData lista = new DetalleCompraData();
         double total = 0;
-
-        for (int i = 0; i < jtfactura.getRowCount(); i++) {
-            Object subtt = jtfactura.getValueAt(i, 3);
-            total += Double.parseDouble(subtt.toString());
-        }
-
-        jtTotal.setText(String.format("%.2f", total));
-
+        double subtotal=0;
+        for (DetalleCompra c : lista.obtenerDetalleCompraFull(idCompra)) {
+               subtotal+= c.getSubTotal();
+        }  
+        jtTotal.setText(String.format("%.2f", subtotal));
     }
 
 
