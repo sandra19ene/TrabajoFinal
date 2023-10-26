@@ -107,31 +107,26 @@ public class factura extends javax.swing.JFrame {
 
         jlNroCompra.setBackground(new java.awt.Color(255, 255, 255));
         jlNroCompra.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jlNroCompra.setForeground(new java.awt.Color(0, 0, 0));
         jlNroCompra.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlNroCompra.setAlignmentX(0.5F);
         jlNroCompra.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         facturaView.add(jlNroCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, 150, 40));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("TOTAL A PAGAR: $");
         facturaView.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 580, 160, -1));
 
         jtTotal.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jtTotal.setForeground(new java.awt.Color(0, 0, 0));
         jtTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jtTotal.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jtTotal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         facturaView.add(jtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 570, 170, 40));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("N° de Compra:");
         facturaView.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 120, -1));
 
         jlfechafa.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jlfechafa.setForeground(new java.awt.Color(0, 0, 0));
         jlfechafa.setAlignmentX(1.0F);
         jlfechafa.setAlignmentY(1.0F);
         jlfechafa.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -145,59 +140,34 @@ public class factura extends javax.swing.JFrame {
         facturaView.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 178, 585, -1));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Razon Social:");
         facturaView.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 90, -1));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Domicilio:");
         facturaView.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 70, -1));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Telefono:");
         facturaView.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, -1, -1));
 
-        TelefonoFac.setBackground(new java.awt.Color(255, 255, 255));
         TelefonoFac.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        TelefonoFac.setForeground(new java.awt.Color(0, 0, 0));
         TelefonoFac.setBorder(null);
         TelefonoFac.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         TelefonoFac.setSelectionColor(new java.awt.Color(255, 255, 255));
-        TelefonoFac.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TelefonoFacActionPerformed(evt);
-            }
-        });
         facturaView.add(TelefonoFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 150, 20));
 
-        razonSocialFac.setBackground(new java.awt.Color(255, 255, 255));
         razonSocialFac.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        razonSocialFac.setForeground(new java.awt.Color(0, 0, 0));
         razonSocialFac.setBorder(null);
         razonSocialFac.setCaretColor(new java.awt.Color(255, 255, 255));
         razonSocialFac.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        razonSocialFac.setSelectedTextColor(new java.awt.Color(255, 255, 255));
         razonSocialFac.setSelectionColor(new java.awt.Color(255, 255, 255));
-        razonSocialFac.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                razonSocialFacActionPerformed(evt);
-            }
-        });
         facturaView.add(razonSocialFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 270, 20));
 
-        DomicilioFac.setBackground(new java.awt.Color(255, 255, 255));
         DomicilioFac.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        DomicilioFac.setForeground(new java.awt.Color(0, 0, 0));
         DomicilioFac.setBorder(null);
         DomicilioFac.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         DomicilioFac.setSelectionColor(new java.awt.Color(255, 255, 255));
-        DomicilioFac.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DomicilioFacActionPerformed(evt);
-            }
-        });
         facturaView.add(DomicilioFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 350, 20));
 
         jtfactura.setModel(new javax.swing.table.DefaultTableModel(
@@ -223,12 +193,10 @@ public class factura extends javax.swing.JFrame {
         facturaView.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 150, 40));
 
         membreteProve.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        membreteProve.setForeground(new java.awt.Color(0, 0, 0));
         membreteProve.setText("LG ELECTRONICS S.R.L");
         facturaView.add(membreteProve, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 260, 60));
 
         membretedomi.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        membretedomi.setForeground(new java.awt.Color(0, 0, 0));
         facturaView.add(membretedomi, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 220, 20));
 
         membretetel.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -260,11 +228,6 @@ public class factura extends javax.swing.JFrame {
                 jbSalirMouseClicked(evt);
             }
         });
-        jbSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbSalirActionPerformed(evt);
-            }
-        });
         getContentPane().add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 650, 180, 50));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -272,18 +235,6 @@ public class factura extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void TelefonoFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TelefonoFacActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TelefonoFacActionPerformed
-
-    private void razonSocialFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_razonSocialFacActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_razonSocialFacActionPerformed
-
-    private void DomicilioFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DomicilioFacActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DomicilioFacActionPerformed
 
     private void jbImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbImprimirActionPerformed
 
@@ -303,44 +254,11 @@ public class factura extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jbSalirMouseClicked
 
-    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbSalirActionPerformed
-
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(factura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(factura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(factura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(factura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new factura().setVisible(true);
-//            }
-//        });
+ 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -383,7 +301,7 @@ public class factura extends javax.swing.JFrame {
             ob[0] = lista.get(i).getCantidad();
             ob[1] = lista.get(i).getProducto().getNombreProducto();
             ob[2] = lista.get(i).getPrecioCosto();
-            ob[3] = lista.get(i).getSubTotal();
+            ob[3] = String.format("%.2f",lista.get(i).getSubTotal());
             modelo.addRow(ob);
         }
 

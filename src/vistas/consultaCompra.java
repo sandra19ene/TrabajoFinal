@@ -123,11 +123,6 @@ public class consultaCompra extends javax.swing.JFrame {
                 jbSalirMouseClicked(evt);
             }
         });
-        jbSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbSalirActionPerformed(evt);
-            }
-        });
         jPanel1.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 480, 160, -1));
 
         jbVerFactura.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -143,11 +138,6 @@ public class consultaCompra extends javax.swing.JFrame {
         jcCompXProve.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jcCompXProveItemStateChanged(evt);
-            }
-        });
-        jcCompXProve.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcCompXProveActionPerformed(evt);
             }
         });
         jPanel1.add(jcCompXProve, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 170, -1));
@@ -223,14 +213,6 @@ public class consultaCompra extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jbVerFacturaActionPerformed
-
-    private void jcCompXProveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcCompXProveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcCompXProveActionPerformed
-
-    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jbSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbSalirMouseClicked
         dispose();
@@ -318,7 +300,7 @@ public class consultaCompra extends javax.swing.JFrame {
                     d.getProducto().getNombreProducto(),
                     d.getCantidad(),
                     d.getPrecioCosto(),
-                    subtotal.longValue(),
+                    String.format("%.2f", subtotal),
                     d.getCompra().getFecha()});
             }
         } catch (NullPointerException ex) {
@@ -352,7 +334,7 @@ public class consultaCompra extends javax.swing.JFrame {
                     d.getProducto().getNombreProducto(),
                     d.getCantidad(),
                     d.getPrecioCosto(),
-                    subtotal,
+                    String.format("%.2f", subtotal),
                     d.getCompra().getFecha()});
             }
         }
@@ -376,7 +358,7 @@ public class consultaCompra extends javax.swing.JFrame {
                         d.getProducto().getNombreProducto(),
                         d.getCantidad(),
                         d.getPrecioCosto(),
-                        subtotal.longValue(),
+                         String.format("%.2f", subtotal),
                         d.getCompra().getFecha()});
                 }
             }

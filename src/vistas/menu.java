@@ -366,11 +366,6 @@ public class menu extends javax.swing.JFrame {
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTabbedPane1.setForeground(new java.awt.Color(6, 60, 130));
         jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
-        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTabbedPane1MouseClicked(evt);
-            }
-        });
 
         PanelProducto.setBackground(new java.awt.Color(255, 255, 255));
         PanelProducto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -394,11 +389,6 @@ public class menu extends javax.swing.JFrame {
         jtNombreProducto.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jtNombreProducto.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jtNombreProducto.setBorder(null);
-        jtNombreProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtNombreProductoActionPerformed(evt);
-            }
-        });
         PanelProducto.add(jtNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 410, -1));
 
         jtablaProducto.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
@@ -461,11 +451,6 @@ public class menu extends javax.swing.JFrame {
 
         jCCategoria.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jCCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Categoria", "TV y AUDIO", "TECNOLOGIA", "ELECTROHOGAR" }));
-        jCCategoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCCategoriaActionPerformed(evt);
-            }
-        });
         PanelProducto.add(jCCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 220, 40));
 
         jLabel32.setBackground(new java.awt.Color(255, 255, 255));
@@ -476,11 +461,6 @@ public class menu extends javax.swing.JFrame {
         jtDescripcion.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jtDescripcion.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jtDescripcion.setBorder(null);
-        jtDescripcion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtDescripcionActionPerformed(evt);
-            }
-        });
         PanelProducto.add(jtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 480, -1));
 
         jBGuardarProdu.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -516,11 +496,6 @@ public class menu extends javax.swing.JFrame {
 
         jtRazonSocial.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jtRazonSocial.setBorder(null);
-        jtRazonSocial.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtRazonSocialActionPerformed(evt);
-            }
-        });
         PanelProveedores.add(jtRazonSocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 370, -1));
 
         jLabel17.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -539,11 +514,6 @@ public class menu extends javax.swing.JFrame {
 
         jtTelefonoProveedor.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jtTelefonoProveedor.setBorder(null);
-        jtTelefonoProveedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtTelefonoProveedorActionPerformed(evt);
-            }
-        });
         PanelProveedores.add(jtTelefonoProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 140, -1));
 
         jLabel24.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -609,11 +579,6 @@ public class menu extends javax.swing.JFrame {
 
         jtDomicilioProveedor.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jtDomicilioProveedor.setBorder(null);
-        jtDomicilioProveedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtDomicilioProveedorActionPerformed(evt);
-            }
-        });
         PanelProveedores.add(jtDomicilioProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 400, -1));
 
         jBGuardarProve.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -731,16 +696,6 @@ public class menu extends javax.swing.JFrame {
         jcProducto.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jcProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opcion" }));
         jcProducto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jcProducto.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jcProductoMouseClicked(evt);
-            }
-        });
-        jcProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcProductoActionPerformed(evt);
-            }
-        });
         PanelCompra.add(jcProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 320, 30));
 
         jLabel11.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -754,24 +709,9 @@ public class menu extends javax.swing.JFrame {
         jcProveedor1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jcProveedor1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciones un Proveedor..." }));
         jcProveedor1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jcProveedor1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jcProveedor1MouseClicked(evt);
-            }
-        });
-        jcProveedor1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcProveedor1ActionPerformed(evt);
-            }
-        });
         PanelCompra.add(jcProveedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 320, 30));
 
         btnComprar.setText("COMPRAR");
-        btnComprar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnComprarMouseClicked(evt);
-            }
-        });
         btnComprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnComprarActionPerformed(evt);
@@ -780,19 +720,9 @@ public class menu extends javax.swing.JFrame {
         PanelCompra.add(btnComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 400, 170, -1));
 
         jTCantidad.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jTCantidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTCantidadActionPerformed(evt);
-            }
-        });
         PanelCompra.add(jTCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 80, 30));
 
         jTPrecioCompra.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jTPrecioCompra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTPrecioCompraActionPerformed(evt);
-            }
-        });
         PanelCompra.add(jTPrecioCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 80, 30));
 
         jLabel20.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -807,11 +737,6 @@ public class menu extends javax.swing.JFrame {
         btnAgregarACarrito.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAgregarACarritoMouseClicked(evt);
-            }
-        });
-        btnAgregarACarrito.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarACarritoActionPerformed(evt);
             }
         });
         PanelCompra.add(btnAgregarACarrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, 170, -1));
@@ -850,14 +775,6 @@ public class menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
-        //  cargarCabeceraListarDetalle();
-    }//GEN-LAST:event_jTabbedPane1MouseClicked
-
-    private void btnAgregarACarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarACarritoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarACarritoActionPerformed
-
     private void btnAgregarACarritoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarACarritoMouseClicked
 
         if (jTCantidad.getText().equals("") || !jTCantidad.getText().matches("[0-9]*")) {
@@ -873,10 +790,6 @@ public class menu extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnAgregarACarritoMouseClicked
-
-    private void jTCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCantidadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTCantidadActionPerformed
 
     private void btnComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprarActionPerformed
 
@@ -894,28 +807,6 @@ public class menu extends javax.swing.JFrame {
         jcProveedor1.setEnabled(true);
 
     }//GEN-LAST:event_btnComprarActionPerformed
-
-    private void btnComprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComprarMouseClicked
-        // TODO add your handling code here:
-
-        //
-    }//GEN-LAST:event_btnComprarMouseClicked
-
-    private void jcProveedor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcProveedor1ActionPerformed
-
-    }//GEN-LAST:event_jcProveedor1ActionPerformed
-
-    private void jcProveedor1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcProveedor1MouseClicked
-
-    }//GEN-LAST:event_jcProveedor1MouseClicked
-
-    private void jcProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcProductoActionPerformed
-
-    }//GEN-LAST:event_jcProductoActionPerformed
-
-    private void jcProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcProductoMouseClicked
-
-    }//GEN-LAST:event_jcProductoMouseClicked
 
     private void jBModificarProveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarProveActionPerformed
 
@@ -960,14 +851,6 @@ public class menu extends javax.swing.JFrame {
         jtDomicilioProveedor.setText(jtablaProveedor.getValueAt(fila, 2).toString());
         jtTelefonoProveedor.setText(jtablaProveedor.getValueAt(fila, 3).toString());
     }//GEN-LAST:event_jtablaProveedorMouseClicked
-
-    private void jtTelefonoProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtTelefonoProveedorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtTelefonoProveedorActionPerformed
-
-    private void jtRazonSocialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtRazonSocialActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtRazonSocialActionPerformed
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
 
@@ -1019,10 +902,6 @@ public class menu extends javax.swing.JFrame {
         jCCategoria.setSelectedItem(jtablaProducto.getValueAt(fila, 5).toString());
 
     }//GEN-LAST:event_jtablaProductoMouseClicked
-
-    private void jtNombreProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNombreProductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtNombreProductoActionPerformed
 
     private void jpBotonProveedoresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBotonProveedoresMouseExited
         jpBotonProveedores.setBackground(new Color(6, 60, 130));
@@ -1102,18 +981,6 @@ public class menu extends javax.swing.JFrame {
         jTPrecioCompra.setText("");
     }//GEN-LAST:event_jbBorrarActionPerformed
 
-    private void jtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDescripcionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtDescripcionActionPerformed
-
-    private void jtDomicilioProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDomicilioProveedorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtDomicilioProveedorActionPerformed
-
-    private void jTPrecioCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTPrecioCompraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTPrecioCompraActionPerformed
-
     private void botonConsultaProMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonConsultaProMouseExited
         botonConsultaPro.setBackground(new Color(6, 60, 130));
         imaProductos.setVisible(false);
@@ -1146,10 +1013,6 @@ public class menu extends javax.swing.JFrame {
         cc.setVisible(true);
         cc.setLocationRelativeTo(null);
     }//GEN-LAST:event_botonConsultaComMouseClicked
-
-    private void jCCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCCategoriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCCategoriaActionPerformed
 
     private void jBGuardarProveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarProveActionPerformed
         String razons = jtRazonSocial.getText();

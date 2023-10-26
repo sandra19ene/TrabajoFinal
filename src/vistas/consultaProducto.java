@@ -157,11 +157,6 @@ public class consultaProducto extends javax.swing.JFrame {
                 jcConsulCategoriaItemStateChanged(evt);
             }
         });
-        jcConsulCategoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcConsulCategoriaActionPerformed(evt);
-            }
-        });
         jPanel1.add(jcConsulCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 160, -1));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -240,10 +235,6 @@ public class consultaProducto extends javax.swing.JFrame {
        modelo4.setRowCount(0);
         productosPorCategoria();
     }//GEN-LAST:event_jcConsulCategoriaItemStateChanged
-
-    private void jcConsulCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcConsulCategoriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcConsulCategoriaActionPerformed
 
     /**
      * @param args the command line arguments
