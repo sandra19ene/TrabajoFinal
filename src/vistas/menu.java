@@ -1200,7 +1200,6 @@ public class menu extends javax.swing.JFrame {
                 producto.getPrecioActual(),
                 producto.getStock(),
                 producto.getCategoria()});
-
         }
 
     }

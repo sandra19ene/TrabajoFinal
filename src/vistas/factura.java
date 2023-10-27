@@ -238,13 +238,16 @@ public class factura extends javax.swing.JFrame {
 
     private void jbImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbImprimirActionPerformed
 
+        try{
         Toolkit tk = facturaView.getToolkit();
         PrintJob pj = tk.getPrintJob(this, null, null);
         Graphics g = pj.getGraphics();
         facturaView.print(g);
         g.dispose();
         pj.end();
-
+        }catch(NullPointerException ex){
+        }
+        
     }//GEN-LAST:event_jbImprimirActionPerformed
 
     private void jbSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbSalirMouseClicked

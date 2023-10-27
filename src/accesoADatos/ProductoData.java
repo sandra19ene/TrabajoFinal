@@ -110,7 +110,7 @@ public class ProductoData {
                 producto.setPrecioActual(rs.getDouble("precioActual"));
                 producto.setStock(rs.getInt("stock"));
                 producto.setCategoria(rs.getString("categoria"));
-
+                
                 productos.add(producto);
             }
 
