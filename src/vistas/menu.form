@@ -425,11 +425,11 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Roboto" size="12" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="__________________________________________________________________________________"/>
+                    <Property name="text" type="java.lang.String" value="_____________________________________________________"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="190" y="40" width="410" height="20"/>
+                      <AbsoluteConstraints x="210" y="40" width="390" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -445,7 +445,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="190" y="40" width="410" height="-1"/>
+                      <AbsoluteConstraints x="210" y="40" width="390" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -597,11 +597,11 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Roboto" size="12" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="_________________________________________________________________________________________________"/>
+                    <Property name="text" type="java.lang.String" value="__________________________________________________________________"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="120" y="100" width="500" height="20"/>
+                      <AbsoluteConstraints x="130" y="100" width="490" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -617,7 +617,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="120" y="100" width="480" height="-1"/>
+                      <AbsoluteConstraints x="130" y="100" width="470" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -690,11 +690,11 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Roboto" size="12" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="__________________________________________________________________________"/>
+                    <Property name="text" type="java.lang.String" value="______________________________________________________"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="130" y="30" width="370" height="40"/>
+                      <AbsoluteConstraints x="130" y="30" width="380" height="40"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -709,7 +709,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="130" y="40" width="370" height="-1"/>
+                      <AbsoluteConstraints x="130" y="40" width="390" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -886,7 +886,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Roboto" size="12" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="________________________________________________________________________________"/>
+                    <Property name="text" type="java.lang.String" value="___________________________________________________________"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

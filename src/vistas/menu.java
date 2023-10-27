@@ -383,13 +383,13 @@ public class menu extends javax.swing.JFrame {
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jLabel9.setText("__________________________________________________________________________________");
-        PanelProducto.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 410, 20));
+        jLabel9.setText("_____________________________________________________");
+        PanelProducto.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 390, 20));
 
         jtNombreProducto.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jtNombreProducto.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jtNombreProducto.setBorder(null);
-        PanelProducto.add(jtNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 410, -1));
+        PanelProducto.add(jtNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 390, -1));
 
         jtablaProducto.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jtablaProducto.setModel(new javax.swing.table.DefaultTableModel(
@@ -455,13 +455,13 @@ public class menu extends javax.swing.JFrame {
 
         jLabel32.setBackground(new java.awt.Color(255, 255, 255));
         jLabel32.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jLabel32.setText("_________________________________________________________________________________________________");
-        PanelProducto.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 500, 20));
+        jLabel32.setText("__________________________________________________________________");
+        PanelProducto.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 490, 20));
 
         jtDescripcion.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jtDescripcion.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jtDescripcion.setBorder(null);
-        PanelProducto.add(jtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 480, -1));
+        PanelProducto.add(jtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 470, -1));
 
         jBGuardarProdu.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jBGuardarProdu.setText("Guardar");
@@ -491,12 +491,12 @@ public class menu extends javax.swing.JFrame {
 
         jLabel13.setBackground(new java.awt.Color(255, 255, 255));
         jLabel13.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jLabel13.setText("__________________________________________________________________________");
-        PanelProveedores.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 370, 40));
+        jLabel13.setText("______________________________________________________");
+        PanelProveedores.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 380, 40));
 
         jtRazonSocial.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jtRazonSocial.setBorder(null);
-        PanelProveedores.add(jtRazonSocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 370, -1));
+        PanelProveedores.add(jtRazonSocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 390, -1));
 
         jLabel17.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(51, 51, 51));
@@ -574,7 +574,7 @@ public class menu extends javax.swing.JFrame {
 
         jLabel18.setBackground(new java.awt.Color(255, 255, 255));
         jLabel18.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jLabel18.setText("________________________________________________________________________________");
+        jLabel18.setText("___________________________________________________________");
         PanelProveedores.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 430, 40));
 
         jtDomicilioProveedor.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
@@ -1017,7 +1017,7 @@ public class menu extends javax.swing.JFrame {
     private void jBGuardarProveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarProveActionPerformed
         String razons = jtRazonSocial.getText();
         if (razons.isEmpty() || !razons.matches("[a-zA-Z\\s\\.,']+")) {
-            JOptionPane.showMessageDialog(null, "Error: debe ingresar un nombre de producto válido (solo letras, espacios, comas, puntos y apóstrofes).");
+            JOptionPane.showMessageDialog(null, "Debe ingresar un nombre de proveedor válido");
             jtRazonSocial.setText("");
         } else {
             if (jtDomicilioProveedor.getText().equals("") || jtDomicilioProveedor.getText().matches("[A-Za-z_0-9]*[0-9][A-Za-z_0-9]*")) {
@@ -1025,7 +1025,7 @@ public class menu extends javax.swing.JFrame {
                 jtDomicilioProveedor.setText("");
             } else {
                 if (jtTelefonoProveedor.getText().equals("") || !jtTelefonoProveedor.getText().matches("[0-9]*")) {
-                    JOptionPane.showMessageDialog(null, "Debe ingresar solo numeros");
+                    JOptionPane.showMessageDialog(null, "Debe ingresar el télefono correctamente");
                     jtTelefonoProveedor.setText("");
                 } else {
 
