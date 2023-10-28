@@ -820,9 +820,11 @@ public class menu extends javax.swing.JFrame {
         Proveedor pro = new Proveedor(id, razon, domi, tele, estado);
 
         ProveedorData proda = new ProveedorData();
-        modelo1.setRowCount(0);
+       
 
         proda.actualizarProveedor(pro);
+               
+         modelo1.setRowCount(0);
         jtRazonSocial.setText("");
         jtDomicilioProveedor.setText("");
         jtTelefonoProveedor.setText("");

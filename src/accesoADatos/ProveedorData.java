@@ -96,7 +96,7 @@ public class ProveedorData {
     }
     
     public List<Proveedor> listaProveedores() {
-        String sql = "SELECT * FROM proveedor ";
+        String sql = "SELECT * FROM proveedor WHERE estado=1";
         List<Proveedor> prove = new ArrayList<>();
         
         try {
