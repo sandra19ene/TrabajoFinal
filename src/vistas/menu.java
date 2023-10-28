@@ -20,6 +20,7 @@ import java.time.LocalDate;
 
 import java.util.Date;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -107,7 +108,9 @@ public class menu extends javax.swing.JFrame {
 
         cargarCabezeraProve();
         cargarTablaProve();
+
         cargarComboProve();
+
         cargarComboProdu();
         jbBorrar.setEnabled(false);
 
@@ -694,7 +697,6 @@ public class menu extends javax.swing.JFrame {
         PanelCompra.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, 150, -1));
 
         jcProducto.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jcProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opcion" }));
         jcProducto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         PanelCompra.add(jcProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 320, 30));
 
@@ -707,7 +709,6 @@ public class menu extends javax.swing.JFrame {
         PanelCompra.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 27, 100, 30));
 
         jcProveedor1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jcProveedor1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciones un Proveedor..." }));
         jcProveedor1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         PanelCompra.add(jcProveedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 320, 30));
 
@@ -783,12 +784,17 @@ public class menu extends javax.swing.JFrame {
         } else if (jTPrecioCompra.getText().equals("") || !jTPrecioCompra.getText().matches("[0-9]*")) {
             JOptionPane.showMessageDialog(null, "Debe ingresar el precio correctamente");
             jTPrecioCompra.setText("");
+        } else if (jcProveedor1.getSelectedItem().toString().equals("Seleccione un Proveedor")) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un proveedor");
+        } else if (jcProducto.getSelectedItem().toString().equals("Selecciones un producto")) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un producto");
         } else {
+
             listarTablaDetalle();
             jcProveedor1.setEnabled(false);
             jbBorrar.setEnabled(true);
-        }
 
+        }
     }//GEN-LAST:event_btnAgregarACarritoMouseClicked
 
     private void btnComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprarActionPerformed
@@ -820,15 +826,15 @@ public class menu extends javax.swing.JFrame {
         Proveedor pro = new Proveedor(id, razon, domi, tele, estado);
 
         ProveedorData proda = new ProveedorData();
-       
 
         proda.actualizarProveedor(pro);
-               
-         modelo1.setRowCount(0);
+
+        modelo1.setRowCount(0);
         jtRazonSocial.setText("");
         jtDomicilioProveedor.setText("");
         jtTelefonoProveedor.setText("");
         cargarTablaProve();
+        jcProveedor1.removeAllItems();
         cargarComboProve();
     }//GEN-LAST:event_jBModificarProveActionPerformed
 
@@ -1356,18 +1362,32 @@ public class menu extends javax.swing.JFrame {
         return formatoFecha.format(fecha);
     }
 
+//    public void cargarComboProve() {
+//        jcProveedor1.removeAllItems();
+//        
+//        ProveedorData prove = new ProveedorData();
+//        for (Proveedor proveedor : prove.listaProveedores()) {
+//         
+//            jcProveedor1.addItem(proveedor.getRazonSocial());
+//        }
+//        
+//    }
     public void cargarComboProve() {
         jcProveedor1.removeAllItems();
+
         ProveedorData prove = new ProveedorData();
+        jcProveedor1.addItem("Seleccione un Proveedor");
         for (Proveedor proveedor : prove.listaProveedores()) {
 
             jcProveedor1.addItem(proveedor.getRazonSocial());
         }
+
     }
 
     public void cargarComboProdu() {
         jcProducto.removeAllItems();
         ProductoData produ = new ProductoData();
+        jcProducto.addItem("Selecciones un producto");
         for (Producto producto : produ.listaProductos()) {
 
             jcProducto.addItem(producto.getNombreProducto());
