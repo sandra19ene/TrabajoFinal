@@ -150,7 +150,7 @@ public class consultaCompra extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Por Nro de Factura: ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 130, 20));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 140, 20));
         jPanel1.add(jtCompXFact, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 170, -1));
 
         jLabel4.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
