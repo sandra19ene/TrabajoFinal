@@ -778,18 +778,18 @@ public class menu extends javax.swing.JFrame {
 
     private void btnAgregarACarritoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarACarritoMouseClicked
 
-        if (jTCantidad.getText().equals("") || !jTCantidad.getText().matches("[0-9]*")) {
+        if (jcProveedor1.getSelectedItem().toString().equals("Seleccione un Proveedor")) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un proveedor");
+        } else if (jcProducto.getSelectedItem().toString().equals("Seleccione un producto")) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un producto");
+        } else if (jTCantidad.getText().equals("") || !jTCantidad.getText().matches("[0-9]*")) {
             JOptionPane.showMessageDialog(null, "Debe ingresar la cantidad correctamente");
             jTCantidad.setText("");
         } else if (jTPrecioCompra.getText().equals("") || !jTPrecioCompra.getText().matches("[0-9]*")) {
             JOptionPane.showMessageDialog(null, "Debe ingresar el precio correctamente");
             jTPrecioCompra.setText("");
-        } else if (jcProveedor1.getSelectedItem().toString().equals("Seleccione un Proveedor")) {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar un proveedor");
-        } else if (jcProducto.getSelectedItem().toString().equals("Selecciones un producto")) {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar un producto");
         } else {
-
+        
             listarTablaDetalle();
             jcProveedor1.setEnabled(false);
             jbBorrar.setEnabled(true);
@@ -1387,7 +1387,7 @@ public class menu extends javax.swing.JFrame {
     public void cargarComboProdu() {
         jcProducto.removeAllItems();
         ProductoData produ = new ProductoData();
-        jcProducto.addItem("Selecciones un producto");
+        jcProducto.addItem("Seleccione un producto");
         for (Producto producto : produ.listaProductos()) {
 
             jcProducto.addItem(producto.getNombreProducto());

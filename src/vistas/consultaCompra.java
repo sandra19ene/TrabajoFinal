@@ -140,6 +140,11 @@ public class consultaCompra extends javax.swing.JFrame {
                 jcCompXProveItemStateChanged(evt);
             }
         });
+        jcCompXProve.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcCompXProveActionPerformed(evt);
+            }
+        });
         jPanel1.add(jcCompXProve, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 170, -1));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -217,6 +222,12 @@ public class consultaCompra extends javax.swing.JFrame {
     private void jbSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbSalirMouseClicked
         dispose();
     }//GEN-LAST:event_jbSalirMouseClicked
+
+    private void jcCompXProveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcCompXProveActionPerformed
+        if(jcCompXProve.hasFocus() && modelo3.getRowCount()==0){
+            JOptionPane.showMessageDialog(null, "Sin compras a este Proveedor");
+        }
+    }//GEN-LAST:event_jcCompXProveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,6 +314,9 @@ public class consultaCompra extends javax.swing.JFrame {
                     String.format("%.2f", subtotal),
                     d.getCompra().getFecha()});
             }
+            if(modelo3.getRowCount()==0){
+                JOptionPane.showMessageDialog(null, "No hay compras para la fecha seleccionada");
+            }
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(null, "Completar fecha");
         }
@@ -316,7 +330,7 @@ public class consultaCompra extends javax.swing.JFrame {
     }
 
     public void cargarTablaComprasPorProveedor() {
-
+        
         if (!jcCompXProve.getSelectedItem().toString().equals("Seleccione Proveedor")) {
             DetalleCompraData deta = new DetalleCompraData();
             ProveedorData prove = new ProveedorData();

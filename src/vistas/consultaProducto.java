@@ -157,6 +157,11 @@ public class consultaProducto extends javax.swing.JFrame {
                 jcConsulCategoriaItemStateChanged(evt);
             }
         });
+        jcConsulCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcConsulCategoriaActionPerformed(evt);
+            }
+        });
         jPanel1.add(jcConsulCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 160, -1));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -168,6 +173,11 @@ public class consultaProducto extends javax.swing.JFrame {
         jcProve.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jcProveItemStateChanged(evt);
+            }
+        });
+        jcProve.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcProveActionPerformed(evt);
             }
         });
         jPanel1.add(jcProve, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 160, -1));
@@ -205,36 +215,63 @@ public class consultaProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_jBsalirMouseClicked
 
     private void jbMasCompradoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbMasCompradoMouseClicked
-        jcProve.setSelectedIndex(0);
         modelo4.setRowCount(0);
-        masCompradoEntreFechas();
+        jcProve.setSelectedIndex(0);
         jcConsulCategoria.setSelectedIndex(0);
+        masCompradoEntreFechas();
+        if (modelo4.getRowCount()==0) {
+            JOptionPane.showMessageDialog(this, "No hay compras entre las fechas indicadas");
+        }
+         
     }//GEN-LAST:event_jbMasCompradoMouseClicked
 
     private void jcProveItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcProveItemStateChanged
         modelo4.setRowCount(0);
         productosPorProve();
-        jDateFecha1.setDate(null);
-        jDateFecha2.setDate(null);
         jcConsulCategoria.setSelectedIndex(0);
     }//GEN-LAST:event_jcProveItemStateChanged
 
     private void jbStockBajoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbStockBajoMouseClicked
         jcProve.setSelectedIndex(0);
+        jcConsulCategoria.setSelectedIndex(0);
+        jDateFecha1.setDate(null);
+        jDateFecha2.setDate(null);
         modelo4.setRowCount(0);
         stockBajo();
         if (modelo4.getRowCount()==0) {
             JOptionPane.showMessageDialog(this, "No hay Productos con stock bajo.");
-        }
-        jDateFecha1.setDate(null);
-        jDateFecha2.setDate(null);
-        jcConsulCategoria.setSelectedIndex(0);
+        }    
     }//GEN-LAST:event_jbStockBajoMouseClicked
 
     private void jcConsulCategoriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcConsulCategoriaItemStateChanged
        modelo4.setRowCount(0);
+
         productosPorCategoria();
     }//GEN-LAST:event_jcConsulCategoriaItemStateChanged
+
+    private void jcProveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcProveActionPerformed
+        if(jcProve.hasFocus() && modelo4.getRowCount()==0){
+            JOptionPane.showMessageDialog(null, "Sin compras a este Proveedor");
+            jDateFecha1.setDate(null);
+            jDateFecha2.setDate(null);
+        }else if(jcProve.hasFocus()){
+            jDateFecha1.setDate(null);
+            jDateFecha2.setDate(null);
+        }
+       
+    }//GEN-LAST:event_jcProveActionPerformed
+
+    private void jcConsulCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcConsulCategoriaActionPerformed
+        if(jcConsulCategoria.hasFocus() && modelo4.getRowCount()==0){
+            JOptionPane.showMessageDialog(null, "Sin compras de esta Categoría");
+            jDateFecha1.setDate(null);
+            jDateFecha2.setDate(null);
+        }else if(jcConsulCategoria.hasFocus()){
+            jDateFecha1.setDate(null);
+            jDateFecha2.setDate(null);
+        }
+       
+    }//GEN-LAST:event_jcConsulCategoriaActionPerformed
 
     /**
      * @param args the command line arguments
